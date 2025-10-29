@@ -12,6 +12,11 @@
         <form class="form" action="/login" method="POST">
             @csrf
             <div class="form__group">
+                <div class="form__error">
+                    @error('login_error')
+                        {{ $message }}
+                    @enderror
+                </div>
                 <div class="form__group-title">
                     <span class="form__label--item">メールアドレス</span>
                 </div>
