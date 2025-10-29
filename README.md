@@ -1,6 +1,6 @@
 # 模擬案件１　フリマアプリ
 
-##　環境構築
+## 環境構築
 
 ### Docker ビルド
 
@@ -39,11 +39,9 @@
 
 ## ER 図
 
+![ER図](./flea_market.drawio.png)
+
 ## URL
 
 - 開発環境：http://localhost/
 - phpMyAdmin:：http://localhost:8080/
-
-```
-
-```
