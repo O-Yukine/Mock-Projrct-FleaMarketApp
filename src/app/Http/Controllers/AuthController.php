@@ -20,7 +20,7 @@ class AuthController extends Controller
             'password' => Hash::make($request['password'])
         ]);
 
-        return redirect('/login');
+        return redirect('/mypage/profile');
     }
 
     public function login(LoginRequest $request)
