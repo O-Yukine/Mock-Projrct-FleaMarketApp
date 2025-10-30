@@ -27,7 +27,6 @@ class RegisterRequest extends FormRequest
             'name' => 'required',
             'email' => 'required|email',
             'password' => 'required|min:8',
-            'password_confirmation' => 'confirmed'
         ];
     }
 
@@ -40,8 +39,16 @@ class RegisterRequest extends FormRequest
             'email.email' => 'メールアドレスはメール形式で入力してください',
             'password.required' => 'パスワードを入力してください',
             'password.min' => 'パスワードは8文字以上で入力してください',
-            'password_confirmation.confirmed' => 'パスワードと一致しません'
 
         ];
+    }
+    public function withValidator($validator)
+    {
+        $validator->after(function ($validator) {
+            if ($this->password !== $this->password_confirmation) {
+
+                $validator->errors()->add('password_confirmation', 'パスワードと一致しません');
+            }
+        });
     }
 }
