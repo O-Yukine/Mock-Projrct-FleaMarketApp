@@ -33,7 +33,7 @@ class AuthController extends Controller
         };
 
         return back()->withErrors([
-            'login_error' => 'ログイン情報が登録されていません。',
+            'login_error' => 'ログイン情報が登録されていません',
         ])->onlyInput('email');
     }
 

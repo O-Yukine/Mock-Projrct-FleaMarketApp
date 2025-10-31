@@ -41,7 +41,7 @@ class RegisterTest extends TestCase
         $response->assertRedirect('/mypage/profile');
     }
 
-    public function test_validation_name()
+    public function test_Register_validation_name()
     {
         $response = $this->post('/register', [
             'name' => '',
@@ -53,7 +53,7 @@ class RegisterTest extends TestCase
         $response->assertSessionHasErrors(['name' => 'お名前を入力してください',]);
     }
 
-    public function test_validation_email()
+    public function test_Register_validation_email()
     {
         $response = $this->post('/register', [
             'name' => 'test1',
@@ -65,7 +65,7 @@ class RegisterTest extends TestCase
         $response->assertSessionHasErrors(['email' => 'メールアドレスを入力してください',]);
     }
 
-    public function test_validation_password_is_empty()
+    public function test_Register_validation_password_is_empty()
     {
         $response = $this->post('/register', [
             'name' => 'test1',
@@ -77,7 +77,7 @@ class RegisterTest extends TestCase
         $response->assertSessionHasErrors(['password' => 'パスワードを入力してください',]);
     }
 
-    public function test_validation_password_is_less_than_eight()
+    public function test_Register_validation_password_is_less_than_eight()
     {
         $response = $this->post('/register', [
             'name' => 'test1',
@@ -89,7 +89,7 @@ class RegisterTest extends TestCase
         $response->assertSessionHasErrors(['password' => 'パスワードは8文字以上で入力してください',]);
     }
 
-    public function test_validation_password_notmatch()
+    public function test_Register_validation_password_notmatch()
     {
         $response = $this->post('/register', [
             'name' => 'test1',
