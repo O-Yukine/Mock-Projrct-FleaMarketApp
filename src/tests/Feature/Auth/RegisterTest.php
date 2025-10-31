@@ -20,28 +20,8 @@ class RegisterTest extends TestCase
         $response->assertStatus(200);
     }
 
-    public function test_user_can_register()
-    {
-        $testData = [
-            'name' => 'test1',
-            'email' => 'test@example.com',
-            'password' => 'password',
-            'password_confirmation' => 'password',
-        ];
 
-        $response = $this->post('/register', $testData);
-
-        $this->assertDatabaseHas('users', [
-            'email' => 'test@example.com',
-            'name' => 'test1',
-        ]);
-
-        $this->assertAuthenticated();
-
-        $response->assertRedirect('/mypage/profile');
-    }
-
-    public function test_Register_validation_name()
+    public function test_Register_validation_name_is_empty()
     {
         $response = $this->post('/register', [
             'name' => '',
@@ -53,7 +33,7 @@ class RegisterTest extends TestCase
         $response->assertSessionHasErrors(['name' => 'お名前を入力してください',]);
     }
 
-    public function test_Register_validation_email()
+    public function test_Register_validation_email_is_empty()
     {
         $response = $this->post('/register', [
             'name' => 'test1',
@@ -99,5 +79,26 @@ class RegisterTest extends TestCase
         ]);
 
         $response->assertSessionHasErrors(['password_confirmation' => 'パスワードと一致しません',]);
+    }
+
+    public function test_user_can_register()
+    {
+        $testData = [
+            'name' => 'test1',
+            'email' => 'test@example.com',
+            'password' => 'password',
+            'password_confirmation' => 'password',
+        ];
+
+        $response = $this->post('/register', $testData);
+
+        $this->assertDatabaseHas('users', [
+            'email' => 'test@example.com',
+            'name' => 'test1',
+        ]);
+
+        $this->assertAuthenticated();
+
+        $response->assertRedirect('/mypage/profile');
     }
 }
