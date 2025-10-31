@@ -1,0 +1,29 @@
+.order {
+    margin: 30px auto;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.order-product {
+    display: flex;
+    justify-content: space-evenly;
+    border-bottom: 1px solid #000;
+}
+
+.payment,
+.shipping-address {
+    border-bottom: 1px solid #000;
+    padding-bottom: 5px;
+}
+
+.shipping-address a {
+    text-decoration: none;
+}
+
+.total-price tr {
+    border: 1px solid #000;
+}
+
+.total-price {
+    margin-bottom: 20px;
+}

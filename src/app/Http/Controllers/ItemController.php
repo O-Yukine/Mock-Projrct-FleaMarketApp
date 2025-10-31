@@ -21,4 +21,29 @@ class ItemController extends Controller
 
         return view('detail');
     }
+
+
+    public function showOrder()
+    {
+
+        return view('order');
+    }
+
+    public function completeOrder()
+    {
+
+        return redirect('/');
+    }
+
+    public function showShippingAddress()
+    {
+
+        return view('update_address');
+    }
+
+    public function updateShippingAddress()
+    {
+
+        return redirect('/');
+    }
 }

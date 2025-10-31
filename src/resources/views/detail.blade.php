@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="{{ asset('css/detail.css') }}">
 @endsection
 @section('content')
-    <div class="product">
+    <div class="product-detail">
         <div class="left-content">
             <img src="" alt="商品画像">
         </div>
@@ -13,7 +13,7 @@
                 <h2 class="product-title">商品名がここに入る</h2>
                 <p>brand</p>
                 <p>¥プライス(税込)</p>
-                <form class="form" action="">
+                <form class="form" action="/purchase" method="/post">
                     <button class="order-button" type="submit">購入手続きへ</button>
                 </form>
                 <h3>商品説明</h3>

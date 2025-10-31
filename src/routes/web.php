@@ -18,8 +18,8 @@ use App\Http\Controllers\ItemController;
 */
 
 Route::post('/register', [AuthController::class, 'register']);
-Route::post('login', [AuthController::class, 'login']);
-Route::post('logout', [AuthController::class, 'destroy']);
+Route::post('/login', [AuthController::class, 'login']);
+Route::post('/logout', [AuthController::class, 'destroy']);
 
 
 Route::get('/mypage/profile', [ProfileController::class, 'showProfile']);
@@ -27,3 +27,8 @@ Route::post('/mypage/profile', [ProfileController::class, 'updateProfile']);
 
 Route::get('/', [ItemController::class, 'index']);
 Route::get('/item', [ItemController::class, 'showDetail']);
+
+Route::get('/purchase', [ItemController::class, 'showOrder']);
+Route::post('/purchase', [ItemController::class, 'completeOrder']);
+
+Route::get('/purchase/address', [ItemController::class, 'showShippingAddress']);
