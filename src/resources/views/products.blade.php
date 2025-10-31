@@ -11,7 +11,7 @@
         </div>
         <div class="products__list">
             <div class="card">
-                <a href="">
+                <a href="/item">
                     <img src="" alt="商品画像">
                     <p>商品名</p>
                 </a>

@@ -1,0 +1,16 @@
+.product {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* 上端を揃える */
+    gap: 40px; /* 左右の間の余白 */
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.left-content img {
+    width: 100%;
+}
+
+.right-content {
+    width: 50%;
+}

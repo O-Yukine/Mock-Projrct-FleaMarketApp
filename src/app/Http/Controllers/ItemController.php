@@ -15,4 +15,10 @@ class ItemController extends Controller
         // $tab = $request->query('tab');
 
     }
+
+    public function showDetail()
+    {
+
+        return view('detail');
+    }
 }

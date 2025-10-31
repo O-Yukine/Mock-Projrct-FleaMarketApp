@@ -26,3 +26,4 @@ Route::get('/mypage/profile', [ProfileController::class, 'showProfile']);
 Route::post('/mypage/profile', [ProfileController::class, 'updateProfile']);
 
 Route::get('/', [ItemController::class, 'index']);
+Route::get('/item', [ItemController::class, 'showDetail']);
