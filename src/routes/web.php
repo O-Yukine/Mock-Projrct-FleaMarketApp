@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ItemController;
 
 
 /*
@@ -23,3 +24,5 @@ Route::post('logout', [AuthController::class, 'destroy']);
 
 Route::get('/mypage/profile', [ProfileController::class, 'showProfile']);
 Route::post('/mypage/profile', [ProfileController::class, 'updateProfile']);
+
+Route::get('/', [ItemController::class, 'index']);

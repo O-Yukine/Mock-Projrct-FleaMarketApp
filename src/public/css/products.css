@@ -1,0 +1,31 @@
+.products {
+}
+
+.products_nav {
+    display: flex;
+    align-items: flex-end; /* 下端に寄せる */
+    height: 80px;
+    border-bottom: 1px solid #000;
+    gap: 40px; /* aタグ同士の余白（お好みで） */
+    padding-left: 100px; /* 余白が入っていたら削除 */
+}
+.products_nav a.active {
+    color: #e60023;
+}
+a:visited {
+    color: #000;
+}
+a {
+    text-decoration: none;
+}
+.products__list {
+    display: flex;
+    flex-wrap: wrap;
+}
+.card {
+    width: 25%;
+    height: 200px;
+}
+.card img {
+    width: 100%;
+}
