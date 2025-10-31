@@ -30,16 +30,29 @@
     align-items: center;
     justify-content: space-between;
 }
-
-.header-nav__link {
-    color: #fff;
-    text-decoration: none;
+.search-bar input {
+    width: 300px;
+    padding: 10px;
 }
-
 .header-nav__button {
     border: none;
     background: transparent;
     color: #fff;
     font-size: 16px;
     cursor: pointer;
+}
+
+.header-nav__link {
+    color: #fff;
+    text-decoration: none;
+}
+
+.header-nav__sell {
+    border: none;
+    background: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 5px;
+    margin-left: 5px;
 }

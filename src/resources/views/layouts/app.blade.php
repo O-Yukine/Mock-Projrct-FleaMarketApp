@@ -16,19 +16,27 @@
         <div class="header__inner">
             <div class="header-utilities">
                 <a class="header__logo" href="/">
-                    Coachtech
+                    COACHTECH
                 </a>
+                <div class="search-bar">
+                    <input type="text" placeholder="なにをお探しですか？">
+                </div>
                 <nav>
                     <ul class="header-nav">
-                        <li class="header-nav__item">
-                            <a class="header-nav__link" href="/mypage">マイページ</a>
-                        </li>
                         <li class="header-nav__item">
                             <form action="/logout" method="POST">
                                 @csrf
                                 <button class="header-nav__button">ログアウト</button>
                             </form>
                         </li>
+                        <li class="header-nav__item">
+                            <a class="header-nav__link" href="/mypage">マイページ</a>
+                        </li>
+                        <li class="header-nav__item">
+                            <a class="header-nav__sell" href="/mypage">出品</a>
+                        </li>
+
+
                     </ul>
                 </nav>
             </div>
