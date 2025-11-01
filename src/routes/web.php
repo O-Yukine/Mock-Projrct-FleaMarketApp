@@ -32,3 +32,6 @@ Route::get('/purchase', [ItemController::class, 'showOrder']);
 Route::post('/purchase', [ItemController::class, 'completeOrder']);
 
 Route::get('/purchase/address', [ItemController::class, 'showShippingAddress']);
+
+Route::get('/sell', [ItemController::class, 'showSellForm']);
+Route::post('/sell', [ItemController::class, 'sellItem']);

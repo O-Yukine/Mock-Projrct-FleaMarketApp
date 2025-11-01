@@ -46,4 +46,10 @@ class ItemController extends Controller
 
         return redirect('/');
     }
+
+    public function showSellForm()
+    {
+
+        return view('sell_item');
+    }
 }
