@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class ProfileController extends Controller
+class MypageController extends Controller
 {
     public function showProfile()
     {
@@ -13,4 +13,11 @@ class ProfileController extends Controller
     }
 
     public function updateProfile() {}
+
+
+    public function showMypage()
+    {
+
+        return view('mypage');
+    }
 }

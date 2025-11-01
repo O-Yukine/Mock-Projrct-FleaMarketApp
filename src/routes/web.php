@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\MypageController;
 use App\Http\Controllers\ItemController;
 
 
@@ -21,9 +21,9 @@ Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'destroy']);
 
-
-Route::get('/mypage/profile', [ProfileController::class, 'showProfile']);
-Route::post('/mypage/profile', [ProfileController::class, 'updateProfile']);
+Route::get('mypage', [MypageController::class, 'showMypage']);
+Route::get('/mypage/profile', [MypageController::class, 'showProfile']);
+Route::post('/mypage/profile', [MypageController::class, 'updateProfile']);
 
 Route::get('/', [ItemController::class, 'index']);
 Route::get('/item', [ItemController::class, 'showDetail']);
