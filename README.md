@@ -31,6 +31,30 @@
 7. シーディングの実行  
    `php artisan db:seed`
 
+## ユニットテストとテスト環境構築
+
+1. テスト用.env を作る  
+   `cp .env .env.testing`
+
+2. .env.testing を編集  
+   ` APP_ENV =test`  
+   `APP_KEY =`
+
+   `DB_DATABASE = laravel_test`  
+   `UserName = root`  
+   `Password = root   `
+
+3. テスト用アプリケーションキーの作成  
+   `php artisan key:generate　--env=testing`
+
+4. マイグレーションの実行  
+   `php artisan migrate --env=testing`
+
+5. テストの実行は以下のコマンド  
+   `php artisan test`
+   または  
+   `vender/bin/phpunit`
+
 ## 使用技術（実行環境）
 
 - PHP8.1
