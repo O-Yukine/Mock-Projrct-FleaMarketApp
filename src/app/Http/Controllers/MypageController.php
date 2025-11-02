@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\ProfileRequest;
 
 class MypageController extends Controller
 {
@@ -12,7 +13,7 @@ class MypageController extends Controller
         return view('update_profile');
     }
 
-    public function updateProfile() {}
+    public function updateProfile(ProfileRequest $request) {}
 
 
     public function showMypage()

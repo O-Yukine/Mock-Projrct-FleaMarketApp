@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\PurchaseRequest;
+use App\Http\Requests\AddressRequest;
 
 class ItemController extends Controller
 {
@@ -26,10 +28,10 @@ class ItemController extends Controller
     public function showOrder()
     {
 
-        return view('order');
+        return view('purchase');
     }
 
-    public function completeOrder()
+    public function completeOrder(Purchaserequest $request)
     {
 
         return redirect('/');
@@ -41,7 +43,7 @@ class ItemController extends Controller
         return view('update_address');
     }
 
-    public function updateShippingAddress()
+    public function updateShippingAddress(AddressRequest $request)
     {
 
         return redirect('/');
