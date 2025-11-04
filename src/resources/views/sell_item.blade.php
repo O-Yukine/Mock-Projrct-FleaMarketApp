@@ -5,19 +5,22 @@
 @endsection
 @section('content')
     <div class="sell-item">
-        <div class="seii-item__title">
+        <div class="sell-item__title">
             <h2>商品の出品</h2>
         </div>
         <div class="sell-item__contents">
-            <form action="" class="form">
+            <form class="form" action="/sell" method="post" enctype="multipart/form-data">
+                @csrf
                 <div class="form__group">
                     <div class="form__group-title"><span>商品画像</span>
                     </div>
                     <div class="form__group-image">
-                        <input type="file" name="image">
+                        <input type="file" name="product_image">
                     </div>
                     <div class="form__error">
-                        <!--バリデーション機能を実装したら記述します。-->
+                        @error('product_image')
+                            {{ $message }}
+                        @enderror
                     </div>
                 </div>
                 <div class="contents__subtitle">
@@ -27,53 +30,38 @@
                     <div class="form__group-title"><span>カテゴリー</span>
                     </div>
                     <div class="form__group-chips">
-                        <label class="chip">
-                            <input type="checkbox" name="categories[]" value="fashion">
-                            <span>ファッション</span>
-                        </label>
-                        <label class="chip">
-                            <input type="checkbox" name="categories[]" value="home">
-                            <span>インテリア</span>
-                        </label>
-                        <label class="chip">
-                            <input type="checkbox" name="categories[]" value="cosme">
-                            <span>ファッション</span>
-                        </label>
-                        <label class="chip">
-                            <input type="checkbox" name="categories[]" value="cosme">
-                            <span>ファッション</span>
-                        </label>
-                        <label class="chip">
-                            <input type="checkbox" name="categories[]" value="cosme">
-                            <span>ファッション</span>
-                        </label>
-                        <label class="chip">
-                            <input type="checkbox" name="categories[]" value="cosme">
-                            <span>ファッション</span>
-                        </label> <label class="chip">
-                            <input type="checkbox" name="categories[]" value="cosme">
-                            <span>ファッション</span>
-                        </label> <label class="chip">
-                            <input type="checkbox" name="categories[]" value="cosme">
-                            <span>ファッション</span>
-                        </label>
+                        @foreach ($categories as $category)
+                            <label class="chip" for="category_{{ $category->id }}">
+                                <input id="category_{{ $category->id }}" type="checkbox" name="categories[]"
+                                    value="{{ $category->id }}"
+                                    {{ in_array($category->id, old('categories', $selectedCategories ?? [])) ? 'checked' : '' }}>
+                                <span>{{ $category->name }}</span>
+                            </label>
+                        @endforeach
                     </div>
                     <div class="form__error">
-                        <!--バリデーション機能を実装したら記述します。-->
+                        @error('categories')
+                            {{ $message }}
+                        @enderror
                     </div>
                 </div>
                 <div class="form__group">
                     <div class="form__group-title"><span>商品の状態</span>
                     </div>
                     <div class="form__group-select">
-                        <select name="condition" id="">
+                        <select name="condition_id">
                             <option value="">選択してください</option>
-                            <option value="">良好</option>
-                            <option value="">状態が悪い</option>
+                            @foreach ($conditions as $condition)
+                                <option value="{{ $condition->id }}">
+                                    {{ old('condition', $selectedConditionId ?? '') == $condition->id ? 'selected' : '' }}>
+                                    {{ $condition->name }}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="form__error">
-                        <!--バリデーション機能を実装したら記述します。-->
+                        @error('condition_id')
+                            {{ $message }}
+                        @enderror
                     </div>
                 </div>
                 <div class="contents__subtitle">
@@ -83,20 +71,19 @@
                     <div class="form__group-title"><span>商品名</span>
                     </div>
                     <div class="form__group-input">
-                        <input type="text" name="name">
+                        <input type="text" name="name" value="{{ old('name') }}">
                     </div>
                     <div class="form__error">
-                        <!--バリデーション機能を実装したら記述します。-->
+                        @error('name')
+                            {{ $message }}
+                        @enderror
                     </div>
                 </div>
                 <div class="form__group">
                     <div class="form__group-title"><span>ブランド名</span>
                     </div>
                     <div class="form__group-input">
-                        <input type="text" name="brand">
-                    </div>
-                    <div class="form__error">
-                        <!--バリデーション機能を実装したら記述します。-->
+                        <input type="text" name="brand" value="{{ old('brand') }}">
                     </div>
                 </div>
                 <div class="form__group">
@@ -104,23 +91,28 @@
                     </div>
                     <div class="form__group-input">
                         <textarea name="content" cols="30" rows="10"></textarea>
+                        {{ old('content') }}
                     </div>
                     <div class="form__error">
-                        <!--バリデーション機能を実装したら記述します。-->
+                        @error('content')
+                            {{ $message }}
+                        @enderror
                     </div>
                 </div>
                 <div class="form__group">
                     <div class="form__group-title"><span>販売価格</span>
                     </div>
                     <div class="form__group-input">
-                        <input type="text" name="price">
+                        <input type="text" name="price" value="{{ old('price') }}">
                     </div>
                     <div class="form__error">
-                        <!--バリデーション機能を実装したら記述します。-->
+                        @error('price')
+                            {{ $message }}
+                        @enderror
                     </div>
                 </div>
                 <div class="sell-item__button">
-                    <button class="button__submit" type="submit">更新する</button>
+                    <button class="button__submit" type="submit">出品する</button>
                 </div>
             </form>
         </div>

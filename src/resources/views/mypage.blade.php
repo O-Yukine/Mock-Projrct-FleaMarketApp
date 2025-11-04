@@ -11,8 +11,8 @@
                     alt="プロフィール写真">
                 <span>{{ $user->name }}</span>
             </div>
-            <div class="mypage__modify">
-                <a href="/mypage/profile">プロフィールを編集</a>
+            <div class="mypage__update">
+                <a class ="mypage__update-link" href="/mypage/profile">プロフィールを編集</a>
             </div>
         </div>
         <div class="mypage-list">

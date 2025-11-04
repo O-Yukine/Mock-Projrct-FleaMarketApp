@@ -13,7 +13,23 @@
     width: 80%;
     text-align: center;
 }
+.profile-image {
+    display: flex;
+    justify-content: space-evenly;
+    width: 30%;
+}
 
+.profile-image img {
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+    margin-right: 30px;
+}
+.profile-image input {
+    border: 1px solid orangered;
+    margin-top: 10px;
+    padding: 10px;
+}
 .input__gropu {
     margin-bottom: 5px;
 }

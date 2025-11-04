@@ -5,13 +5,19 @@
     display: flex;
     justify-content: space-evenly;
 }
-
-.mypage__modify {
+.mypage__profile {
+    width: 30%;
+}
+.mypage__profile img {
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+}
+.mypage__update-link {
     border: 1px solid red;
     padding: 5px;
     border-radius: 3px;
-}
-.mypage__modify a {
+    height: 30px;
     color: red;
 }
 

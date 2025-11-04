@@ -27,7 +27,8 @@ class ExhibitionRequest extends FormRequest
             'name' => 'required',
             'content' => 'required|string|max:255',
             'product_image' => 'required|image|mimes:jpeg,png',
-            'category_id' => 'required|exists:categories,id',
+            'categories' => 'required|array',
+            'categories.*' => 'exists:categories,id',
             'condition_id' => 'required|exists:conditions,id',
             'price' => 'required|integer|min:0'
         ];
@@ -42,7 +43,7 @@ class ExhibitionRequest extends FormRequest
             'content.max' => '商品説明は255文字以内で入力してください',
             'product_image.required' => '商品画像をアップロードしてください',
             'product_image.mimes' => '拡張子は.jpegもしくは.pngです',
-            'category_id.required' => 'カテゴリーを選択してください',
+            'categories.required' => 'カテゴリーを選択してください',
             'condition_id.required' => '商品の状態を選択してください',
             'price.required' => '商品価格を入力してください',
             'price.integer' => '商品価格は数値で入力してください',
