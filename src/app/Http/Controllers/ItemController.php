@@ -14,7 +14,9 @@ class ItemController extends Controller
 {
     public function index(Request $request)
     {
-        return view('products');
+        $products = Product::all();
+
+        return view('products', compact('products'));
 
 
         ///?tab=mylistの表示（いいねした商品のみ）

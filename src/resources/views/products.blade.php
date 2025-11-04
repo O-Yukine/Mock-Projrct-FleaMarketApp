@@ -10,43 +10,14 @@
             <a href="/?tab=mylist">マイリスト</a>
         </div>
         <div class="products__list">
-            <div class="card">
-                <a href="/item">
-                    <img src="" alt="商品画像">
-                    <p>商品名</p>
-                </a>
-            </div>
-            <div class="card">
-                <a href="">
-                    <img src="" alt="商品画像">
-                    <p>商品名</p>
-                </a>
-            </div>
-            <div class="card">
-                <a href="">
-                    <img src="" alt="商品画像">
-                    <p>商品名</p>
-                </a>
-            </div>
-            <div class="card">
-                <a href="">
-                    <img src="" alt="商品画像">
-                    <p>商品名</p>
-                </a>
-            </div>
-            <div class="card">
-                <a href="">
-                    <img src="" alt="商品画像">
-                    <p>商品名</p>
-                </a>
-            </div>
-            <div class="card">
-                <a href="">
-                    <img src="" alt="商品画像">
-                    <p>商品名</p>
-                </a>
-            </div>
-
+            @foreach ($products as $product)
+                <div class="card">
+                    <a href="/item">
+                        <img src="{{ asset('storage/product_images/' . $product->product_image) }}" alt="商品画像">
+                        <p>{{ $product->name }}</p>
+                    </a>
+                </div>
+            @endforeach
         </div>
     </div>
 @endsection

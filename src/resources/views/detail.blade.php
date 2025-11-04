@@ -5,22 +5,21 @@
 @endsection
 @section('content')
     <div class="product-detail">
+        @foreach ($products as $product)
+        @endforeach
         <div class="left-content">
-            <img src="" alt="商品画像">
+            <img src="{{ $product->product_image }}" alt="商品画像">
         </div>
         <div class="right-content">
             <div class="product-detail">
-                <h2 class="product-title">商品名がここに入る</h2>
-                <p>brand</p>
-                <p>¥プライス(税込)</p>
+                <h2 class="product-title">{{ $product->name }}</h2>
+                <p>{{ $product->brand }}</p>
+                <p>¥{{ $product->price }}(税込)</p>
                 <form class="form" action="/purchase" method="/post">
                     <button class="order-button" type="submit">購入手続きへ</button>
                 </form>
                 <h3>商品説明</h3>
-                <p>is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
-                    standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it
-                    to make a type specimen book. It has survived not only five centuries, but also the leap into electronic
-                    typesetting, remaining essentially unchanged. </p>
+                <p>{{ $product->content }} </p>
                 <h3>商品の情報</h3>
                 <h4>カテゴリー</h4>
                 <h4>商品の状態（コンディション）</h4>
