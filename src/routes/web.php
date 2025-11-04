@@ -31,7 +31,8 @@ Route::get('/item/{item_id}', [ItemController::class, 'showDetail']);
 Route::get('/purchase/{item_id}', [ItemController::class, 'showOrder']);
 Route::post('/purchase/{item_id}', [ItemController::class, 'completeOrder']);
 
-Route::get('/purchase/address', [ItemController::class, 'showShippingAddress']);
+Route::get('/purchase/address/{{item_id}}', [ItemController::class, 'showShippingAddress']);
+Route::get('/purchase/address/{{item_id}}', [ItemController::class, 'updateShippingAddress']);
 
 Route::get('/sell', [ItemController::class, 'showSellForm']);
 Route::post('/sell', [ItemController::class, 'sellItem']);

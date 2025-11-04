@@ -10,6 +10,7 @@ use App\Models\Category;
 use App\Models\Condition;
 use App\Models\Product;
 use App\Models\User;
+use App\Models\Purchase;
 
 class ItemController extends Controller
 {
@@ -40,8 +41,16 @@ class ItemController extends Controller
         return view('purchase', compact('product', 'user'));
     }
 
-    public function completeOrder(Purchaserequest $request)
+    public function completeOrder(Purchaserequest $request, $item_id)
     {
+        Purchase::create([
+            'user_id' => auth()->id(),
+            'product_id' => $item_id,
+            'payment_method' => $request->payment_method,
+            'post_code' => $request->post_code,
+            'address' => $request->address,
+            'building' => $request->building
+        ]);
 
         return redirect('/');
     }
