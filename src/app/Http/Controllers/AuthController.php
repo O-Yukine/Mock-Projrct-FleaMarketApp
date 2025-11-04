@@ -22,6 +22,11 @@ class AuthController extends Controller
 
         Auth::login($user);
 
+        $user->profile()->create([
+            'post_code' => '',
+            'address' => ''
+        ]);
+
         return redirect('/mypage/profile');
     }
 

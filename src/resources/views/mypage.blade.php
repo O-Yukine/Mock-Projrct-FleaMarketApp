@@ -7,8 +7,9 @@
     <div class="mypage">
         <div class="mypage-title">
             <div class="mypage__profile">
-                <img src="" alt="プロフィール写真">
-                <span>ユーザー名</span>
+                <img src="{{ $profile->profile_image ? asset('storage/profile_images/' . $profile->profile_image) : '' }}"
+                    alt="プロフィール写真">
+                <span>{{ $user->name }}</span>
             </div>
             <div class="mypage__modify">
                 <a href="/mypage/profile">プロフィールを編集</a>

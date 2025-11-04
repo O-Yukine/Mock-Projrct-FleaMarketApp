@@ -24,7 +24,7 @@ class ProfileRequest extends FormRequest
     public function rules()
     {
         return [
-            'profile_image' => 'image|mimes:jpeg,png',
+            'profile_image' => 'nullable|image|mimes:jpeg,png',
             'name' => 'required|max:20',
             'post_code' => 'required|regex:/^\d{3}-\d{4}$/',
             'address'     => 'required|string'

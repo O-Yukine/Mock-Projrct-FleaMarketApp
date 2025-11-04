@@ -4,21 +4,51 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\ProfileRequest;
+use App\Models\User;
+use App\Models\Profile;
 
 class MypageController extends Controller
 {
     public function showProfile()
     {
+        $user = auth()->user();
+        $profile = $user->profile;
 
-        return view('update_profile');
+        return view('update_profile', compact('user', 'profile'));
     }
 
-    public function updateProfile(ProfileRequest $request) {}
+    public function updateProfile(ProfileRequest $request)
+    {
+        // $user_id = auth()->id();
+        // $user_name = $request->input('name');
+        // $profile = $request->only(['post_code', 'address', 'building']);
+
+        // User::find($user_id)->update(['name' => $user_name]);
+        // Profile::where('user_id', $user_id)->update($profile);
+
+        $user = auth()->user();
+
+        $profile = $request->only(['post_code', 'address', 'building']);
+
+
+        if ($request->hasFile('profile_image')) {
+            $filename = $request->file('profile_image')->getClientOriginalName();
+            $request->file('profile_image')->storeAs('public/profile_images', $filename);
+            $profile['profile_image'] = $filename;
+        }
+
+        $user->update(['name' => $request->input('name')]);
+        $user->profile->update($profile);
+
+        return redirect('/');
+    }
 
 
     public function showMypage()
     {
+        $user = auth()->user();
+        $profile = $user->profile;
 
-        return view('mypage');
+        return view('mypage', compact('user', 'profile'));
     }
 }

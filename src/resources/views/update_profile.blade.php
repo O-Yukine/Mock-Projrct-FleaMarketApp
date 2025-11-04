@@ -10,10 +10,12 @@
         <div class="profile__title">
             <h2>プロフィール設定</h2>
         </div>
-        <form action="" class="form">
+        <form class="form" action="/mypage/profile" enctype="multipart/form-data" method="post">
+            @csrf
             <div class="profile-image">
-                <img src="" alt="プロフィール画像">
-                <input type="file" name='image'>
+                <img src="{{ $profile->profile_image ? asset('storage/profile_images/' . $profile->profile_image) : '' }}"
+                    alt="プロフィール写真">
+                <input type="file" name='profile_image'>
             </div>
             <div class="profile__contents">
                 <div class="input__gropu">
@@ -21,10 +23,12 @@
                         <p>ユーザー名</p>
                     </div>
                     <div class="input__group-input">
-                        <input type="text" name="name" value="">
+                        <input type="text" name="name" value="{{ $user->name }}">
                     </div>
                     <div class="form__error">
-                        <!--バリデーション機能を実装したら記述します。-->
+                        @error('name')
+                            {{ $message }}
+                        @enderror
                     </div>
                 </div>
                 <div class="input__gropu">
@@ -32,10 +36,12 @@
                         <p>郵便番号</p>
                     </div>
                     <div class="input__group-input">
-                        <input type="text" name="post_code" value="">
+                        <input type="text" name="post_code" value={{ $profile->post_code }}>
                     </div>
                     <div class="form__error">
-                        <!--バリデーション機能を実装したら記述します。-->
+                        @error('post_code')
+                            {{ $message }}
+                        @enderror
                     </div>
                 </div>
                 <div class="input__gropu">
@@ -43,10 +49,12 @@
                         <p>住所</p>
                     </div>
                     <div class="input__group-input">
-                        <input type="text" name="address" value="">
+                        <input type="text" name="address" value="{{ $profile->address }}">
                     </div>
                     <div class="form__error">
-                        <!--バリデーション機能を実装したら記述します。-->
+                        @error('address')
+                            {{ $message }}
+                        @enderror
                     </div>
                 </div>
                 <div class="input__gropu">
@@ -54,10 +62,7 @@
                         <p>建物名</p>
                     </div>
                     <div class="input__group-input">
-                        <input type="text" name="building" value="">
-                    </div>
-                    <div class="form__error">
-                        <!--バリデーション機能を実装したら記述します。-->
+                        <input type="text" name="building" value="{{ $profile->building ?? '' }}">
                     </div>
                 </div>
                 <div class="update-profile__button">
