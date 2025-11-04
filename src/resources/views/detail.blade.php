@@ -4,16 +4,17 @@
     <link rel="stylesheet" href="{{ asset('css/detail.css') }}">
 @endsection
 @section('content')
-    <div class="product-detail">
+    <div class="product">
         <div class="left-content">
-            <img src="{{ $product->product_image }}" alt="商品画像">
+            <img src="{{ asset('storage/product_images/' . $product->product_image) }}" alt="商品画像">
         </div>
         <div class="right-content">
             <div class="product-detail">
                 <h2 class="product-title">{{ $product->name }}</h2>
                 <p>{{ $product->brand }}</p>
                 <p>¥{{ $product->price }}(税込)</p>
-                <form class="form" action="/purchase" method="/post">
+                <form class="form" action="/purchase/{{ $product->id }}" method="get">
+                    @csrf
                     <button class="order-button" type="submit">購入手続きへ</button>
                 </form>
                 <h3>商品説明</h3>

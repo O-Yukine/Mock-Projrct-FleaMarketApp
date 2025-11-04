@@ -28,8 +28,8 @@ Route::post('/mypage/profile', [MypageController::class, 'updateProfile']);
 Route::get('/', [ItemController::class, 'index']);
 Route::get('/item/{item_id}', [ItemController::class, 'showDetail']);
 
-Route::get('/purchase', [ItemController::class, 'showOrder']);
-Route::post('/purchase', [ItemController::class, 'completeOrder']);
+Route::get('/purchase/{item_id}', [ItemController::class, 'showOrder']);
+Route::post('/purchase/{item_id}', [ItemController::class, 'completeOrder']);
 
 Route::get('/purchase/address', [ItemController::class, 'showShippingAddress']);
 

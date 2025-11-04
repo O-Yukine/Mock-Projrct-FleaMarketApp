@@ -9,6 +9,7 @@ use App\Http\Requests\ExhibitionRequest;
 use App\Models\Category;
 use App\Models\Condition;
 use App\Models\Product;
+use App\Models\User;
 
 class ItemController extends Controller
 {
@@ -31,10 +32,12 @@ class ItemController extends Controller
     }
 
 
-    public function showOrder()
+    public function showOrder($item_id)
     {
+        $product = Product::find($item_id);
+        $user = User::with('profile')->find(auth()->id());
 
-        return view('purchase');
+        return view('purchase', compact('product', 'user'));
     }
 
     public function completeOrder(Purchaserequest $request)

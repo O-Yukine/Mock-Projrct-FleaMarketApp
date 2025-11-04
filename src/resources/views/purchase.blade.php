@@ -8,32 +8,33 @@
         <div class="left-content">
             <div class="order-product">
                 <div class="order-image">
-                    <img src="" alt="商品画像">
+                    <img src="{{ asset('storage/product_images/' . $product->product_image) }}" alt="商品画像">
                 </div>
                 <div class="order-information">
-                    <h4>商品名</h4>
-                    <p>¥price</p>
+                    <h4>{{ $product->name }}</h4>
+                    <p>¥{{ $product->price }}</p>
                 </div>
             </div>
             <div class="payment">
                 <p>支払い方法</p>
                 <select id="payment-method" class="paying-option">
                     <option value="">支払い方法を選択</option>
-                    <option value="convience">コンビニ払い</option>
+                    <option value="convenience">コンビニ払い</option>
                     <option value="credit">カード支払い</option>
                 </select>
             </div>
             <div class="shipping-address">
                 <span>配送先</span><span><a href="/purchase/address">変更する</a></span>
-                <p>〒xxx-yyy</p>
-                <p>ここに住所と建物がはいるよ</p>
+                {{ $user->profile->post_code }}
+                {{ $user->profile->address }}
+                {{ $user->profile->building }}
             </div>
         </div>
         <div class="right-content">
             <table class="total-price">
                 <tr>
                     <th>商品代金</th>
-                    <td>¥total_price</td>
+                    <td>¥{{ $product->price }}</td>
                 </tr>
                 <tr>
                     <th>支払い方法</th>

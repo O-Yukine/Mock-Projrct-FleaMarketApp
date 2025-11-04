@@ -1,13 +1,29 @@
 .order {
-    margin: 30px auto;
+    margin: 30px 20px;
     display: flex;
     justify-content: space-evenly;
 }
-
+.order-image {
+    width: 30%;
+}
+.order-image img {
+    width: 100%;
+    padding-bottom: 15px;
+}
 .order-product {
     display: flex;
     justify-content: space-evenly;
+    margin-bottom: 20px;
     border-bottom: 1px solid #000;
+}
+.left-content {
+    width: 40%;
+    margin: 20px;
+    text-align: left;
+}
+.right-content {
+    width: 35%;
+    margin: 20px;
 }
 
 .payment,
@@ -20,6 +36,10 @@
     text-decoration: none;
 }
 
+.total-price {
+    width: 100%;
+    height: 200px;
+}
 .total-price tr {
     border: 1px solid #000;
 }
