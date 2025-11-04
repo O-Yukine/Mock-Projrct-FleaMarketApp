@@ -12,7 +12,7 @@
         <div class="products__list">
             @foreach ($products as $product)
                 <div class="card">
-                    <a href="/item">
+                    <a href="/item/{{ $product->id }}">
                         <img src="{{ asset('storage/product_images/' . $product->product_image) }}" alt="商品画像">
                         <p>{{ $product->name }}</p>
                     </a>

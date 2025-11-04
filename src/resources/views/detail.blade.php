@@ -5,8 +5,6 @@
 @endsection
 @section('content')
     <div class="product-detail">
-        @foreach ($products as $product)
-        @endforeach
         <div class="left-content">
             <img src="{{ $product->product_image }}" alt="商品画像">
         </div>
@@ -22,7 +20,10 @@
                 <p>{{ $product->content }} </p>
                 <h3>商品の情報</h3>
                 <h4>カテゴリー</h4>
-                <h4>商品の状態（コンディション）</h4>
+                @foreach ($product->categories as $category)
+                    {{ $category->name }}
+                @endforeach
+                <h4>商品の状態</h4>{{ $product->condition->name }}
             </div>
             <div class="product__comments">
                 <h3>コメント（数）</h3>

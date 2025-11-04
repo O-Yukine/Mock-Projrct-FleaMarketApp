@@ -26,7 +26,7 @@ Route::get('/mypage/profile', [MypageController::class, 'showProfile']);
 Route::post('/mypage/profile', [MypageController::class, 'updateProfile']);
 
 Route::get('/', [ItemController::class, 'index']);
-Route::get('/item', [ItemController::class, 'showDetail']);
+Route::get('/item/{item_id}', [ItemController::class, 'showDetail']);
 
 Route::get('/purchase', [ItemController::class, 'showOrder']);
 Route::post('/purchase', [ItemController::class, 'completeOrder']);

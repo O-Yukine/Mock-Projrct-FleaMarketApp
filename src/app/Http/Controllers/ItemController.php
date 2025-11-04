@@ -24,10 +24,10 @@ class ItemController extends Controller
 
     }
 
-    public function showDetail()
+    public function showDetail($item_id)
     {
-
-        return view('detail');
+        $product = Product::with(['categories', 'condition'])->find($item_id);
+        return view('detail', compact('product'));
     }
 
 
