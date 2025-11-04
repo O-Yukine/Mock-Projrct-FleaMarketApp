@@ -16,7 +16,7 @@ class ItemController extends Controller
 {
     public function index(Request $request)
     {
-        $products = Product::all();
+        $products = Product::with('purchases')->get();
 
         return view('products', compact('products'));
 

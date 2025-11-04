@@ -15,6 +15,9 @@
                     <a href="/item/{{ $product->id }}">
                         <img src="{{ asset('storage/product_images/' . $product->product_image) }}" alt="商品画像">
                         <p>{{ $product->name }}</p>
+                        @if ($product->purchases->isNotEmpty())
+                            <span class="sold-label">sold</span>
+                        @endif
                     </a>
                 </div>
             @endforeach
