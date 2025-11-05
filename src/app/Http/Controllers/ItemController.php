@@ -47,10 +47,15 @@ class ItemController extends Controller
 
     public function likeItem($item_id)
     {
-
         $user = auth()->user();
 
-        $user->likes()->attach($item_id);
+        $user->likes()->toggle($item_id);
+
+        // if (!$user->likes()->where($user->id, 'user_id')->exist()) {
+        //     $user->likes()->attach($item_id);
+        // } else {
+        //     $user->likes()->detach($item_id);
+        // }
 
         return redirect("/item/{$item_id}");
     }

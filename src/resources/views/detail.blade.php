@@ -17,12 +17,21 @@
 
                 <form class="comments-form" action="/item/{{ $product->id }}/like" method="post">
                     @csrf
-                    <button><i class="fa-regular fa-star fa-lg"></i>
+                    <button class="like__button" type="submit">
+                        <i
+                            class="{{ $product->likedBy->contains(auth()->id()) ? 'fa-solid' : 'fa-regular' }} fa-star fa-lg"></i>
                     </button>
+
+                    {{-- @if ($product->likedBy->contains(auth()->id()))
+                        <button><i class="fa-solid fa-star fa-lg"></i>
+                        </button>
+                    @else
+                        <button><i class="fa-regular fa-star fa-lg"></i>
+                        </button>
+                    @endif --}}
                 </form>
 
-                <span>{{ $product->likedBy->count() }}</span>
-
+                {{ $product->likedBy->count() }}
 
                 <i class="fa-regular fa-comment fa-lg"></i>
                 {{ $product->comments->count() ?? 0 }}
