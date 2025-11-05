@@ -55,15 +55,16 @@ class ItemController extends Controller
         return redirect('/');
     }
 
-    public function showShippingAddress()
+    public function showShippingAddress($item_id)
     {
+        $profile = auth()->user()->profile;
 
-        return view('update_address');
+        return view('update_address', compact('item_id', 'profile'));
     }
 
-    public function updateShippingAddress(AddressRequest $request)
+    public function updateShippingAddress(AddressRequest $request, $item_id)
     {
-
+        dd($request->all());
         return redirect('/');
     }
 

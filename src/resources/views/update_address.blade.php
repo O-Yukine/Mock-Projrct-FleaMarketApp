@@ -9,16 +9,19 @@
             <h2>住所の変更</h2>
         </div>
         <div class="adress__contents">
-            <form action="" class="from">
+            <form class="from" action="/purchase/address/{{ $item_id }}" method="post">
+                @csrf
                 <div class="form__gropu">
                     <div class="form__group-title">
                         <span>郵便番号</span>
                     </div>
                     <div class="form__group-input">
-                        <input type="text" name="post-code" value="">
+                        <input type="text" name="post_code" value="{{ $profile->post_code }}">
                     </div>
                     <div class="form__error">
-                        <!--バリデーション機能を実装したら記述します。-->
+                        @error('post_code')
+                            {{ $message }}
+                        @enderror
                     </div>
                 </div>
                 <div class="form__gropu">
@@ -26,10 +29,12 @@
                         <span>住所</span>
                     </div>
                     <div class="form__group-input">
-                        <input type="text" name="address" value="">
+                        <input type="text" name="address" value="{{ $profile->address }}">
                     </div>
                     <div class="form__error">
-                        <!--バリデーション機能を実装したら記述します。-->
+                        @error('address')
+                            {{ $message }}
+                        @enderror
                     </div>
                 </div>
                 <div class="form__gropu">
@@ -37,7 +42,7 @@
                         <span>建物名</span>
                     </div>
                     <div class="form__group-input">
-                        <input type="text" name="building" value="">
+                        <input type="text" name="building" value="{{ $profile->building }}">
                     </div>
                 </div>
                 <div class="update-address__button">
