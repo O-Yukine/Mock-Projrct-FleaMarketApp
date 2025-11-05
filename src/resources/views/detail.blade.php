@@ -2,6 +2,8 @@
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/detail.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" type="text/css" />
+    ```
 @endsection
 @section('content')
     <div class="product">
@@ -11,6 +13,19 @@
         <div class="right-content">
             <div class="product-detail">
                 <h2 class="product-title">{{ $product->name }}</h2>
+
+
+                <form class="comments-form" action="/item/{{ $product->id }}/like" method="post">
+                    @csrf
+                    <button><i class="fa-regular fa-star fa-lg"></i>
+                    </button>
+                </form>
+
+                <span>{{ $product->likedBy->count() }}</span>
+
+
+                <i class="fa-regular fa-comment fa-lg"></i>
+                {{ $product->comments->count() ?? 0 }}
                 <p>{{ $product->brand }}</p>
                 <p>¥{{ $product->price }}(税込)</p>
                 <form class="form" action="/purchase/{{ $product->id }}" method="get">
@@ -40,7 +55,7 @@
                         </div>
                     @endforeach
                 @endisset
-                <form class="comments-form" action="/item/{{ $product->id }}" method="post">
+                <form class="comments-form" action="/item/{{ $product->id }}/comment" method="post">
                     @csrf
                     <p>商品へのコメント</p>
                     <textarea name="comment"cols="30" rows="10">

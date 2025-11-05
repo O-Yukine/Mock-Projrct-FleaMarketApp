@@ -27,7 +27,10 @@ Route::post('/mypage/profile', [MypageController::class, 'updateProfile']);
 
 Route::get('/', [ItemController::class, 'index']);
 Route::get('/item/{item_id}', [ItemController::class, 'showDetail']);
-Route::post('/item/{item_id}', [ItemController::class, 'makeComment']);
+
+Route::post('/item/{item_id}/comment', [ItemController::class, 'makeComment']);
+Route::post('/item/{item_id}/like', [ItemController::class, 'likeItem']);
+
 
 Route::get('/purchase/{item_id}', [ItemController::class, 'showOrder']);
 Route::post('/purchase/{item_id}', [ItemController::class, 'completeOrder']);

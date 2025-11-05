@@ -29,7 +29,7 @@ class ItemController extends Controller
 
     public function showDetail($item_id)
     {
-        $product = Product::with(['categories', 'condition', 'comments'])->find($item_id);
+        $product = Product::with(['categories', 'condition', 'comments', 'likedBy'])->findOrFail($item_id);
 
         return view('detail', compact('product'));
     }
@@ -42,7 +42,17 @@ class ItemController extends Controller
             'comment' => $request->comment
         ]);
 
-        return redirect("detail/{$item_id}");
+        return redirect("/item/{$item_id}");
+    }
+
+    public function likeItem($item_id)
+    {
+
+        $user = auth()->user();
+
+        $user->likes()->attach($item_id);
+
+        return redirect("/item/{$item_id}");
     }
 
 
