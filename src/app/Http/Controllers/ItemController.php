@@ -11,6 +11,7 @@ use App\Models\Condition;
 use App\Models\Product;
 use App\Models\User;
 use App\Models\Purchase;
+use App\Models\Comment;
 
 class ItemController extends Controller
 {
@@ -28,9 +29,22 @@ class ItemController extends Controller
 
     public function showDetail($item_id)
     {
-        $product = Product::with(['categories', 'condition'])->find($item_id);
+        $product = Product::with(['categories', 'condition', 'comments'])->find($item_id);
+
         return view('detail', compact('product'));
     }
+
+    public function makeComment(Request $request, $item_id)
+    {
+        Comment::create([
+            'product_id' => $item_id,
+            'user_id' => auth()->id(),
+            'comment' => $request->comment
+        ]);
+
+        return redirect("detail/{$item_id}");
+    }
+
 
 
     public function showOrder($item_id)
@@ -64,7 +78,7 @@ class ItemController extends Controller
 
     public function updateShippingAddress(AddressRequest $request, $item_id)
     {
-        dd($request->all());
+
         return redirect('/');
     }
 

@@ -27,14 +27,23 @@
                 <h4>商品の状態</h4>{{ $product->condition->name }}
             </div>
             <div class="product__comments">
-                <h3>コメント（数）</h3>
-                <img src="" alt="コメントしたユーザー">
-                ユーザー名
-                <p>コメント一覧</p>
-                <form action="" class="comments-form">
+                <h3>コメント{{ $product->comments->count() ?? 0 }}件</h3>
+                @isset($product->comments)
+                    @foreach ($product->comments as $comment)
+                        <div class="comment__title">
+                            <img src="{{ asset('storage/profile_images/' . $comment->user->profile->profile_image) }}"
+                                alt="プロフィール写真">
+                            {{ $comment->user->name }}
+                        </div>
+                        <div class="comment__contents">
+                            {{ $comment->comment }}
+                        </div>
+                    @endforeach
+                @endisset
+                <form class="comments-form" action="/item/{{ $product->id }}" method="post">
+                    @csrf
                     <p>商品へのコメント</p>
-                    <textarea name="comment" id="" cols="30" rows="10">
-
+                    <textarea name="comment"cols="30" rows="10">
                     </textarea>
                     <div class="comment__button">
                         <button class="comment__submit">コメントを送信する</button>
