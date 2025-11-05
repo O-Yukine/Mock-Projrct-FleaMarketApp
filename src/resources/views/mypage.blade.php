@@ -17,46 +17,29 @@
         </div>
         <div class="mypage-list">
             <div class="products_nav">
-                <a href="/">出品した商品</a>
-                <a href="/?tab=mylist">購入した商品</a>
+                <a href="/mypage?page=sell" class="{{ $tab === 'sell' ? 'active' : '' }}">出品した商品</a>
+                <a href="/mypage?page=buy" class="{{ $tab === 'buy' ? 'active' : '' }}">購入した商品</a>
             </div>
             <div class="products__list">
-                <div class="card">
-                    <a href="/item">
-                        <img src="" alt="商品画像">
-                        <p>商品名</p>
-                    </a>
-                </div>
-                <div class="card">
-                    <a href="">
-                        <img src="" alt="商品画像">
-                        <p>商品名</p>
-                    </a>
-                </div>
-                <div class="card">
-                    <a href="">
-                        <img src="" alt="商品画像">
-                        <p>商品名</p>
-                    </a>
-                </div>
-                <div class="card">
-                    <a href="">
-                        <img src="" alt="商品画像">
-                        <p>商品名</p>
-                    </a>
-                </div>
-                <div class="card">
-                    <a href="">
-                        <img src="" alt="商品画像">
-                        <p>商品名</p>
-                    </a>
-                </div>
-                <div class="card">
-                    <a href="">
-                        <img src="" alt="商品画像">
-                        <p>商品名</p>
-                    </a>
-                </div>
+                @if ($tab === 'sell')
+                    @foreach ($sell_items as $item)
+                        <div class="card">
+                            <img src="{{ asset('storage/product_images/' . $item->product_image) }}" alt="商品画像">
+                            <p>{{ $item->name }}</p>
+                        </div>
+                    @endforeach
+                @endif
+
+                @if ($tab === 'buy')
+                    @foreach ($purchased_items as $purchase)
+                        <div class="card">
+                            <img src="{{ asset('storage/product_images/' . $purchase->product->product_image) }}"
+                                alt="商品画像">
+                            <p>{{ $purchase->product->name }}</p>
+                        </div>
+                    @endforeach
+                @endif
+
             </div>
         </div>
     </div>

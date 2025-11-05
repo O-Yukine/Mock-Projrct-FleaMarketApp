@@ -26,13 +26,12 @@ a {
     width: 100%;
 }
 .card {
-    width: 23%;
+    width: 20%;
     height: 250px;
-    border: 1px solid #000;
     margin: 15px;
 }
 .card img {
-    width: 100%;
+    width: 80%;
 }
 .sold-label {
     background: red;

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests\ProfileRequest;
 use App\Models\User;
 use App\Models\Profile;
+use App\Models\Product;
+use App\Models\Purchase;
 
 class MypageController extends Controller
 {
@@ -44,11 +46,24 @@ class MypageController extends Controller
     }
 
 
-    public function showMypage()
+    public function showMypage(Request $request)
     {
         $user = auth()->user();
         $profile = $user->profile;
 
-        return view('mypage', compact('user', 'profile'));
+        $tab = $request->query('page', 'sell');
+
+        $sell_items = collect();
+        $purchased_items = collect();
+
+        if ($tab == 'sell') {
+            $sell_items = Product::where('user_id', $user->id)->get();
+        }
+
+        if ($tab == 'buy') {
+            $purchased_items = Purchase::with('product')->where('user_id', $user->id)->get();
+        }
+
+        return view('mypage', compact('user', 'profile', 'sell_items', 'purchased_items', 'tab'));
     }
 }
