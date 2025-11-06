@@ -18,11 +18,11 @@ class ItemController extends Controller
     public function index(Request $request)
     {
 
-        // if (auth()->check()) {
-        //     return redirect('/?tab=mylist');
-        // }
+        $tab = $request->query('tab', '');
 
-        $tab = $request->query('tab');
+        if ($tab === '') {
+            $tab = auth()->check() ? 'mylist' : 'recommended'; // ログイン済みはマイリスト、未ログインはおすすめ
+        }
 
         if ($tab === 'mylist') {
             if (auth()->check()) {
