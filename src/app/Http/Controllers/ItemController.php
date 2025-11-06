@@ -17,13 +17,41 @@ class ItemController extends Controller
 {
     public function index(Request $request)
     {
-        $products = Product::with('purchases')->get();
 
-        return view('products', compact('products'));
+        // if (auth()->check()) {
+        //     return redirect('/?tab=mylist');
+        // }
+
+        $tab = $request->query('tab');
+
+        if ($tab === 'mylist') {
+            if (auth()->check()) {
+                $products = auth()->user()->likes()->with('purchases')->get();
+            } else {
+                $products = collect();
+            }
+        } else {
+            if (auth()->check()) {
+                $products = Product::with('purchases')->where('user_id', '<>', auth()->id())->get();
+            } else {
+                $products = Product::with('purchases')->get();
+            }
+        }
+
+        return view('products', compact('products', 'tab'));
 
 
-        ///?tab=mylistの表示（いいねした商品のみ）
         // $tab = $request->query('tab');
+        // $user = auth()->user();
+
+        // if ($tab == 'mylist') {
+        //     $products = $user->likes()->get();
+        // } else {
+        //     if ($tab == '') {
+        //         $products = Product::with('purchases')->get();
+        //     }
+        // }
+
 
     }
 

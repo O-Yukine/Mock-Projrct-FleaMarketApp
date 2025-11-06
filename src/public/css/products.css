@@ -9,14 +9,17 @@
     gap: 40px; /* aタグ同士の余白（お好みで） */
     padding-left: 100px; /* 余白が入っていたら削除 */
 }
-.products_nav a.active {
-    color: #e60023;
+.products_nav a {
+    text-decoration: none;
+    color: #000;
+    padding-bottom: 5px;
 }
-a:visited {
+
+.products_nav a:visited {
     color: #000;
 }
-a {
-    text-decoration: none;
+.products_nav a.active {
+    color: #e60023;
 }
 .products__list {
     display: flex;
