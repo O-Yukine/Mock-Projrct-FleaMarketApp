@@ -21,23 +21,27 @@ Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'destroy']);
 
-Route::get('mypage', [MypageController::class, 'showMypage']);
-Route::get('/mypage/profile', [MypageController::class, 'showProfile']);
-Route::post('/mypage/profile', [MypageController::class, 'updateProfile']);
-
 Route::get('/', [ItemController::class, 'index']);
-
 Route::get('/item/{item_id}', [ItemController::class, 'showDetail']);
 
-Route::post('/item/{item_id}/comment', [ItemController::class, 'makeComment']);
-Route::post('/item/{item_id}/like', [ItemController::class, 'likeItem']);
+Route::middleware('auth')->prefix('mypage')->group(function () {
+    Route::get('/', [MypageController::class, 'showMypage']);
+    Route::get('/profile', [MypageController::class, 'showProfile']);
+    Route::post('/profile', [MypageController::class, 'updateProfile']);
+});
 
 
-Route::get('/purchase/{item_id}', [ItemController::class, 'showOrder']);
-Route::post('/purchase/{item_id}', [ItemController::class, 'completeOrder']);
+Route::post('/item/{item_id}/comment', [ItemController::class, 'makeComment'])->middleware('auth');
+Route::post('/item/{item_id}/like', [ItemController::class, 'likeItem'])->middleware('auth');
 
-Route::get('/purchase/address/{item_id}', [ItemController::class, 'showShippingAddress']);
-Route::post('/purchase/address/{item_id}', [ItemController::class, 'updateShippingAddress']);
+Route::middleware('auth')->prefix('purchase')->group(function () {
+    Route::get('/{item_id}', [ItemController::class, 'showOrder']);
+    Route::post('/{item_id}', [ItemController::class, 'completeOrder']);
+    Route::get('/address/{item_id}', [ItemController::class, 'showShippingAddress']);
+    Route::post('/address/{item_id}', [ItemController::class, 'updateShippingAddress']);
+});
 
-Route::get('/sell', [ItemController::class, 'showSellForm']);
-Route::post('/sell', [ItemController::class, 'sellItem']);
+Route::middleware('auth')->prefix('sell')->group(function () {
+    Route::get('/', [ItemController::class, 'showSellForm']);
+    Route::post('/', [ItemController::class, 'sellItem']);
+});

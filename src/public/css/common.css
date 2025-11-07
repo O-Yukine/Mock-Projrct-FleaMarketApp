@@ -21,27 +21,15 @@
     font-size: 24px;
 }
 
-.header-utilities nav {
-    width: 18%;
+.search-bar input {
+    width: 300px;
+    padding: 10px;
 }
-
 .header-nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
-.search-bar input {
-    width: 300px;
-    padding: 10px;
-}
-.header-nav__button {
-    border: none;
-    background: transparent;
-    color: #fff;
-    font-size: 16px;
-    cursor: pointer;
-}
-
 .header-nav__link {
     color: #fff;
     text-decoration: none;
@@ -55,4 +43,11 @@
     cursor: pointer;
     padding: 5px;
     margin-left: 5px;
+}
+.header-nav__button {
+    border: none;
+    background: transparent;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
 }

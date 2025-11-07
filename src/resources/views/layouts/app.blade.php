@@ -16,34 +16,16 @@
     <header class="header">
         <div class="header__inner">
             <div class="header-utilities">
-                <a class="header__logo" href="/">
-                    COACHTECH
-                </a>
+                <a class="header__logo" href="/">COACHTECH</a>
+            </div>
+            @unless (Request::is('register') || Request::is('login'))
                 <div class="search-bar">
                     <form class="form" action="/" method="get">
-                        <input type="hidden" name="tab" value="{{ $tab ?? '' }}">
                         <input type="text" name="keyword" value="{{ request('keyword') }}" placeholder="なにをお探しですか？">
                     </form>
                 </div>
-                <nav>
-                    <ul class="header-nav">
-                        <li class="header-nav__item">
-                            <form action="/logout" method="POST">
-                                @csrf
-                                <button class="header-nav__button">ログアウト</button>
-                            </form>
-                        </li>
-                        <li class="header-nav__item">
-                            <a class="header-nav__link" href="/mypage">マイページ</a>
-                        </li>
-                        <li class="header-nav__item">
-                            <a class="header-nav__sell" href="/sell">出品</a>
-                        </li>
-
-
-                    </ul>
-                </nav>
-            </div>
+                @include('layouts.header_nav')
+            @endunless
         </div>
     </header>
 
