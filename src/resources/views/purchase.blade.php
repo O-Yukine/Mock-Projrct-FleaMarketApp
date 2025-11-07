@@ -27,12 +27,15 @@
                 </div>
                 <div class="shipping-address">
                     <span>配送先</span><span><a href="/purchase/address/{{ $product->id }}">変更する</a></span>
-                    <input type="hidden" name="post_code" value="{{ $user->profile->post_code }}">
-                    {{ $user->profile->post_code }}
-                    <input type="hidden" name="address" value="{{ $user->profile->address }}">
-                    {{ $user->profile->address }}
-                    <input type="hidden" name="building" value="{{ $user->profile->building }}">
-                    {{ $user->profile->building }}
+                    <input type="hidden" name="post_code"
+                        value="{{ $shipping_address['post_code'] ?? $user->profile->post_code }}">
+                    {{ $shipping_address['post_code'] ?? $user->profile->post_code }}
+                    <input type="hidden" name="address"
+                        value="{{ $shipping_address['address'] ?? $user->profile->address }}">
+                    {{ $shipping_address['address'] ?? $user->profile->address }}
+                    <input type="hidden" name="building"
+                        value="{{ $shipping_address['building'] ?? ($user->profile->building ?? '') }}">
+                    {{ $shipping_address['building'] ?? ($user->profile->building ?? '') }}
                 </div>
             </div>
             <div class="right-content">

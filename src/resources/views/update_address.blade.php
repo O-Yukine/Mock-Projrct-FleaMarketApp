@@ -45,9 +45,11 @@
                         <input type="text" name="building" value="{{ $profile->building }}">
                     </div>
                 </div>
-                <div class="update-address__button">
-                    <button class="button__submit" type="submit">更新する</button>
-                </div>
+                <form class="form" action="/purchase/address/{{ $item_id }}">
+                    <div class="update-address__button">
+                        <button class="button__submit" type="submit">更新する</button>
+                    </div>
+                </form>
             </form>
         </div>
     </div>

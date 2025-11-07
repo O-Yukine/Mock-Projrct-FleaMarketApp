@@ -21,7 +21,7 @@ class ItemController extends Controller
         $tab = $request->query('tab', '');
 
         if ($tab === '') {
-            $tab = auth()->check() ? 'mylist' : 'recommended'; // ログイン済みはマイリスト、未ログインはおすすめ
+            $tab = auth()->check() ? 'mylist'  : 'recommended'; // ログイン済みはマイリスト、未ログインはおすすめ
         }
 
         if ($tab === 'mylist') {
@@ -95,7 +95,9 @@ class ItemController extends Controller
         $product = Product::find($item_id);
         $user = User::with('profile')->find(auth()->id());
 
-        return view('purchase', compact('product', 'user'));
+        $shipping_address = session('shipping_address');
+
+        return view('purchase', compact('product', 'user', 'shipping_address'));
     }
 
     public function completeOrder(Purchaserequest $request, $item_id)
@@ -121,8 +123,13 @@ class ItemController extends Controller
 
     public function updateShippingAddress(AddressRequest $request, $item_id)
     {
+        $shipping_address = [
+            'post_code' => $request->post_code,
+            'address' => $request->address,
+            'building' => $request->building
+        ];
 
-        return redirect('/');
+        return redirect("/purchase/{$item_id}")->with('shipping_address', $shipping_address);
     }
 
     public function showSellForm()
