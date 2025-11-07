@@ -53,4 +53,14 @@ class Product extends Model
     {
         return $this->belongsToMany(User::class, 'user_product_likes');
     }
+
+    public function scopeProductSearch($query, $keyword)
+    {
+
+        if (!empty($keyword)) {
+            $query->where('name', 'like', '%' . $keyword . '%');
+        }
+
+        return $query;
+    }
 }

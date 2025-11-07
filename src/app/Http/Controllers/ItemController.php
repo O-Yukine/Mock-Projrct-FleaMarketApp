@@ -12,47 +12,35 @@ use App\Models\Product;
 use App\Models\User;
 use App\Models\Purchase;
 use App\Models\Comment;
+use Illuminate\Contracts\Session\Session;
+
 
 class ItemController extends Controller
 {
     public function index(Request $request)
     {
-
         $tab = $request->query('tab', '');
+        $keyword = $request->input('keyword');
 
         if ($tab === '') {
-            $tab = auth()->check() ? 'mylist'  : 'recommended'; // ログイン済みはマイリスト、未ログインはおすすめ
+            $tab = auth()->check() ? 'mylist'  : 'recommended';
         }
 
         if ($tab === 'mylist') {
             if (auth()->check()) {
-                $products = auth()->user()->likes()->with('purchases')->get();
+                $products = auth()->user()->likes()->with('purchases')->ProductSearch($keyword)->get();
             } else {
                 $products = collect();
             }
         } else {
             if (auth()->check()) {
-                $products = Product::with('purchases')->where('user_id', '<>', auth()->id())->get();
+                $products = Product::with('purchases')->where('user_id', '<>', auth()->id())->ProductSearch($keyword)->get();
             } else {
-                $products = Product::with('purchases')->get();
+                $products = Product::with('purchases')->ProductSearch($keyword)->get();
             }
         }
 
-        return view('products', compact('products', 'tab'));
-
-
-        // $tab = $request->query('tab');
-        // $user = auth()->user();
-
-        // if ($tab == 'mylist') {
-        //     $products = $user->likes()->get();
-        // } else {
-        //     if ($tab == '') {
-        //         $products = Product::with('purchases')->get();
-        //     }
-        // }
-
-
+        return view('products', compact('products', 'tab', 'keyword'));
     }
 
     public function showDetail($item_id)

@@ -20,7 +20,10 @@
                     COACHTECH
                 </a>
                 <div class="search-bar">
-                    <input type="text" placeholder="なにをお探しですか？">
+                    <form class="form" action="/" method="get">
+                        <input type="hidden" name="tab" value="{{ $tab ?? '' }}">
+                        <input type="text" name="keyword" value="{{ request('keyword') }}" placeholder="なにをお探しですか？">
+                    </form>
                 </div>
                 <nav>
                     <ul class="header-nav">

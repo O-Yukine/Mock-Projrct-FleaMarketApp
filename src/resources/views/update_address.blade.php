@@ -16,7 +16,7 @@
                         <span>郵便番号</span>
                     </div>
                     <div class="form__group-input">
-                        <input type="text" name="post_code" value="{{ $profile->post_code }}">
+                        <input type="text" name="post_code">
                     </div>
                     <div class="form__error">
                         @error('post_code')
@@ -29,7 +29,7 @@
                         <span>住所</span>
                     </div>
                     <div class="form__group-input">
-                        <input type="text" name="address" value="{{ $profile->address }}">
+                        <input type="text" name="address">
                     </div>
                     <div class="form__error">
                         @error('address')
@@ -42,14 +42,12 @@
                         <span>建物名</span>
                     </div>
                     <div class="form__group-input">
-                        <input type="text" name="building" value="{{ $profile->building }}">
+                        <input type="text" name="building">
                     </div>
                 </div>
-                <form class="form" action="/purchase/address/{{ $item_id }}">
-                    <div class="update-address__button">
-                        <button class="button__submit" type="submit">更新する</button>
-                    </div>
-                </form>
+                <div class="update-address__button">
+                    <button class="button__submit" type="submit">更新する</button>
+                </div>
             </form>
         </div>
     </div>
