@@ -54,14 +54,14 @@
     cursor: pointer;
 }
 
-.login__link {
+.register__link {
     margin-top: 20px;
     text-align: center;
 }
-.login__link a {
+.regster__link a {
     text-decoration: none;
     color: blue;
 }
-.login__link a:visited {
+.register__link a:visited {
     color: blue;
 }

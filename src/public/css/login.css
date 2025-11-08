@@ -11,7 +11,7 @@
 
 .form {
     margin: 0 auto;
-    width: 25%;
+    width: 50%;
     text-align: center;
 }
 
@@ -39,21 +39,28 @@
 }
 
 .form__button {
-    margin-top: 20px;
+    margin-top: 40px;
 }
 
 .form__button-submit {
     padding: 10px;
-    width: 30%;
+    width: 100%;
     height: 50px;
     border: none;
     border-radius: 3px;
-    background: #000;
+    background: red;
     color: #fff;
     cursor: pointer;
 }
 
-.register__link {
+.login__link {
     margin-top: 20px;
     text-align: center;
+}
+.login__link a {
+    text-decoration: none;
+    color: blue;
+}
+.login__link a:visited {
+    color: blue;
 }
