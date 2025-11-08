@@ -15,10 +15,12 @@
                 <div class="card">
                     <a href="/item/{{ $product->id }}">
                         <img src="{{ asset('storage/product_images/' . $product->product_image) }}" alt="商品画像">
-                        <p>{{ $product->name }}</p>
-                        @if ($product->purchases->isNotEmpty())
-                            <span class="sold-label">sold</span>
-                        @endif
+                        <div class="card-info">
+                            <p>{{ $product->name }}</p>
+                            @if ($product->purchases->isNotEmpty())
+                                <span class="sold-label">sold</span>
+                            @endif
+                        </div>
                     </a>
                 </div>
             @endforeach

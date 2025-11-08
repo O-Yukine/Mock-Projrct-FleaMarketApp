@@ -1,13 +1,14 @@
 .products {
+    max-width: 1540px;
 }
 
 .products_nav {
     display: flex;
-    align-items: flex-end; /* 下端に寄せる */
+    align-items: flex-end;
     height: 80px;
     border-bottom: 1px solid #000;
-    gap: 40px; /* aタグ同士の余白（お好みで） */
-    padding-left: 100px; /* 余白が入っていたら削除 */
+    gap: 40px;
+    padding-left: 100px;
 }
 .products_nav a {
     text-decoration: none;
@@ -24,17 +25,29 @@
 .products__list {
     display: flex;
     flex-wrap: wrap;
-    text-align: center;
     margin: 15px;
     width: 100%;
+    gap: 10px;
 }
 .card {
     width: 20%;
-    height: 250px;
     margin: 15px;
+}
+.card a {
+    text-decoration: none;
+    color: #000;
+}
+.card a:visited {
+    color: #000;
 }
 .card img {
     width: 80%;
+}
+.card-info {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* 名前とsoldの間の余白 */
+    margin-top: 5px;
 }
 .sold-label {
     background: red;
@@ -42,4 +55,16 @@
     padding: 2px 6px;
     border-radius: 4px;
     margin-left: 4px;
+}
+
+@media screen and (max-width: 850px) and (min-width: 768px) {
+    .card {
+        width: 40%;
+        margin: 15px;
+    }
+
+    .products__list {
+        margin: 20px 60px;
+        gap: 50px;
+    }
 }
