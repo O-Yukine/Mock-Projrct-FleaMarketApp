@@ -13,8 +13,7 @@
         <div class="right-content">
             <div class="product-detail">
                 <h2 class="product-title">{{ $product->name }}</h2>
-
-
+                {{ $product->brand }}
                 <form class="comments-form" action="/item/{{ $product->id }}/like" method="post">
                     @csrf
                     <button class="like__button" type="submit">
@@ -37,21 +36,22 @@
                 {{ $product->comments->count() ?? 0 }}
                 <p>{{ $product->brand }}</p>
                 <p>¥{{ $product->price }}(税込)</p>
-                <form class="form" action="/purchase/{{ $product->id }}" method="get">
+                <form class="form.order" action="/purchase/{{ $product->id }}" method="get">
                     @csrf
-                    <button class="order-button" type="submit">購入手続きへ</button>
+                    <button class="order__button-submit" type="submit">購入手続きへ</button>
                 </form>
                 <h3>商品説明</h3>
                 <p>{{ $product->content }} </p>
                 <h3>商品の情報</h3>
-                <h4>カテゴリー</h4>
+                <span>カテゴリー</span>
                 @foreach ($product->categories as $category)
-                    {{ $category->name }}
+                    <span class="category-chips">{{ $category->name }}</span>
                 @endforeach
-                <h4>商品の状態</h4>{{ $product->condition->name }}
+                <br>
+                <span>商品の状態</span><span class="product-condition">{{ $product->condition->name }}</span>
             </div>
             <div class="product__comments">
-                <h3>コメント{{ $product->comments->count() ?? 0 }}件</h3>
+                <h3>コメント({{ $product->comments->count() ?? 0 }})</h3>
                 @isset($product->comments)
                     @foreach ($product->comments as $comment)
                         <div class="comment__title">
@@ -67,10 +67,10 @@
                 <form class="comments-form" action="/item/{{ $product->id }}/comment" method="post">
                     @csrf
                     <p>商品へのコメント</p>
-                    <textarea name="comment"cols="30" rows="10">
+                    <textarea name="comment">
                     </textarea>
                     <div class="comment__button">
-                        <button class="comment__submit">コメントを送信する</button>
+                        <button class="comment__button-submit">コメントを送信する</button>
                     </div>
                 </form>
             </div>
