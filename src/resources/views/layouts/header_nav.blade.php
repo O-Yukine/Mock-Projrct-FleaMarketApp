@@ -1,8 +1,8 @@
 @guest
-    <nav>
+    <nav class="nav">
         <ul class="header-nav">
             <li class="header-nav__item">
-                <a class="header-nav__button" href="/login">ログイン</a>
+                <a class="header-nav__link" href="/login">ログイン</a>
             </li>
 
             <li class="header-nav__item">
@@ -14,7 +14,7 @@
         </ul>
     </nav>
 @else
-    <nav>
+    <nav class="nav">
         <ul class="header-nav">
             <li class="header-nav__item">
                 <form action="/logout" method="POST">

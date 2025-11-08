@@ -17,14 +17,14 @@
         <div class="header__inner">
             <div class="header-utilities">
                 <a class="header__logo" href="/">COACHTECH</a>
-            </div>
-            @unless (Request::is('register') || Request::is('login'))
-                <div class="search-bar">
-                    <form class="form" action="/" method="get">
-                        <input type="text" name="keyword" value="{{ request('keyword') }}" placeholder="なにをお探しですか？">
-                    </form>
+                @unless (Request::is('register') || Request::is('login'))
+                    <div class="search-bar">
+                        <form class="form" action="/" method="get">
+                            <input type="text" name="keyword" value="{{ request('keyword') }}" placeholder="なにをお探しですか？">
+                        </form>
+                    </div>
+                    @include('layouts.header_nav')
                 </div>
-                @include('layouts.header_nav')
             @endunless
         </div>
     </header>
