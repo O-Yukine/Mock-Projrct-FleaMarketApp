@@ -15,7 +15,10 @@
                     <div class="form__group-title"><span>商品画像</span>
                     </div>
                     <div class="form__group-image">
-                        <input type="file" name="product_image">
+                        <label for="product_image" class="custom-file-input">
+                            <span class="file-text">画像を選択する</span>
+                            <input type="file" name="product_image">
+                        </label>
                     </div>
                     <div class="form__error">
                         @error('product_image')
@@ -27,11 +30,12 @@
                     <h3>商品の詳細</h3>
                 </div>
                 <div class="form__group">
-                    <div class="form__group-title"><span>カテゴリー</span>
+                    <div class="form__group-title">
+                        <span>カテゴリー</span>
                     </div>
                     <div class="form__group-chips">
                         @foreach ($categories as $category)
-                            <label class="chip" for="category_{{ $category->id }}">
+                            <label class="chip">
                                 <input id="category_{{ $category->id }}" type="checkbox" name="categories[]"
                                     value="{{ $category->id }}"
                                     {{ in_array($category->id, old('categories', $selectedCategories ?? [])) ? 'checked' : '' }}>
@@ -53,7 +57,7 @@
                             <option value="">選択してください</option>
                             @foreach ($conditions as $condition)
                                 <option value="{{ $condition->id }}">
-                                    {{ old('condition', $selectedConditionId ?? '') == $condition->id ? 'selected' : '' }}>
+                                    {{ old('condition', $selectedConditionId ?? '') == $condition->id ? 'selected' : '' }}
                                     {{ $condition->name }}</option>
                             @endforeach
                         </select>
@@ -102,7 +106,8 @@
                 <div class="form__group">
                     <div class="form__group-title"><span>販売価格</span>
                     </div>
-                    <div class="form__group-input">
+                    <div class="form__group-input price-input">
+                        <span class="price-symbol">¥</span>
                         <input type="text" name="price" value="{{ old('price') }}">
                     </div>
                     <div class="form__error">
