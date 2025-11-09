@@ -1,41 +1,60 @@
 .order {
-    margin: 30px 20px;
+    margin: auto 0px;
+    max-width: 1540px;
+}
+.form {
     display: flex;
     justify-content: space-evenly;
+}
+.left-content {
+    width: 60%;
+    margin: 50px 20px;
+    text-align: left;
+}
+.right-content {
+    width: 30%;
+    margin: 50px 20px;
 }
 .order-image {
     width: 30%;
 }
 .order-image img {
     width: 100%;
-    padding-bottom: 15px;
+    padding-bottom: 20px;
 }
 .order-product {
     display: flex;
-    justify-content: space-evenly;
     margin-bottom: 20px;
     border-bottom: 1px solid #000;
 }
-.left-content {
-    width: 40%;
-    margin: 20px;
-    text-align: left;
+.order-information {
+    margin-left: 30px;
 }
-.right-content {
-    width: 35%;
-    margin: 20px;
+.order-information h3 {
+    margin-top: 0;
 }
-
-.payment,
+.payment-type,
 .shipping-address {
     border-bottom: 1px solid #000;
-    padding-bottom: 5px;
+    padding-bottom: 10px;
+}
+.payment-type__contents,
+.shipping-address__contents {
+    margin-bottom: 10px;
 }
 
+.shipping-address__title {
+    display: flex;
+    justify-content: space-between;
+}
 .shipping-address a {
     text-decoration: none;
+    margin: 20px;
+    color: blue;
 }
-
+.shipping-address a :valid {
+    color: blue;
+}
 .total-price {
     width: 100%;
     height: 200px;
@@ -46,4 +65,17 @@
 
 .total-price {
     margin-bottom: 20px;
+}
+.order__submit {
+    margin-top: 30px;
+}
+.order__submit-button {
+    padding: 5px;
+    width: 100%;
+    height: 30px;
+    border: none;
+    border-radius: 3px;
+    background: red;
+    color: #fff;
+    cursor: pointer;
 }
