@@ -15,7 +15,10 @@
             <div class="profile-image">
                 <img src="{{ $profile->profile_image ? asset('storage/profile_images/' . $profile->profile_image) : '' }}"
                     alt="プロフィール写真">
-                <input type="file" name='profile_image'>
+                <label for="profile_image" class="custom-file-input">
+                    <span class="file-text">画像を選択する</span>
+                    <input type="file" name="profile_image">
+                </label>
             </div>
             <div class="profile__contents">
                 <div class="input__gropu">
@@ -69,11 +72,5 @@
                     <button class="button__submit" type="submit">更新する</button>
                 </div>
         </form>
-    </div>
-
-
-
-
-
     </div>
 @endsection
