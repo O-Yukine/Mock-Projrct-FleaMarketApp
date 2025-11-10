@@ -16,7 +16,8 @@
     <header class="header">
         <div class="header__inner">
             <div class="header-utilities">
-                <a class="header__logo" href="/">COACHTECH</a>
+                <a class="header__logo" href="/"><img src="{{ asset('images/COACHTECH.png') }}"
+                        alt="coachtech logo"></a>
                 @unless (Request::is('register') || Request::is('login'))
                     <div class="search-bar">
                         <form class="form" action="/" method="get">
