@@ -5,11 +5,11 @@
 @endsection
 @section('content')
     <div class="mypage">
-        <div class="mypage-title">
+        <div class="mypage-header">
             <div class="mypage__profile">
                 <img src="{{ $profile->profile_image ? asset('storage/profile_images/' . $profile->profile_image) : '' }}"
                     alt="プロフィール写真">
-                <span>{{ $user->name }}</span>
+                <h3>{{ $user->name }}</h3>
             </div>
             <div class="mypage__update">
                 <a class ="mypage__update-link" href="/mypage/profile">プロフィールを編集</a>
@@ -25,7 +25,9 @@
                     @foreach ($sell_items as $item)
                         <div class="card">
                             <img src="{{ asset('storage/product_images/' . $item->product_image) }}" alt="商品画像">
-                            <p>{{ $item->name }}</p>
+                            <div class="card-info">
+                                <p>{{ $item->name }}</p>
+                            </div>
                         </div>
                     @endforeach
                 @endif
@@ -35,7 +37,9 @@
                         <div class="card">
                             <img src="{{ asset('storage/product_images/' . $purchase->product->product_image) }}"
                                 alt="商品画像">
-                            <p>{{ $purchase->product->name }}</p>
+                            <div class="card-info">
+                                <p>{{ $purchase->product->name }}</p>
+                            </div>
                         </div>
                     @endforeach
                 @endif

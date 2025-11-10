@@ -14,6 +14,7 @@
             <div class="product-detail">
                 <h2 class="product-title">{{ $product->name }}</h2>
                 {{ $product->brand }}
+                <p>¥{{ $product->price }}(税込)</p>
                 <form class="comments-form" action="/item/{{ $product->id }}/like" method="post">
                     @csrf
                     <button class="like__button" type="submit">
@@ -34,8 +35,8 @@
 
                 <i class="fa-regular fa-comment fa-lg"></i>
                 {{ $product->comments->count() ?? 0 }}
-                <p>{{ $product->brand }}</p>
-                <p>¥{{ $product->price }}(税込)</p>
+
+
                 <form class="form.order" action="/purchase/{{ $product->id }}" method="get">
                     @csrf
                     <button class="order__button-submit" type="submit">購入手続きへ</button>
@@ -43,6 +44,7 @@
                 <h3>商品説明</h3>
                 <p>{{ $product->content }} </p>
                 <h3>商品の情報</h3>
+
                 <span>カテゴリー</span>
                 @foreach ($product->categories as $category)
                     <span class="category-chips">{{ $category->name }}</span>
