@@ -21,9 +21,9 @@
                     <div class="payment-type__title">
                         <h4>支払い方法</h4>
                     </div>
-                    <div class="payment-type__contents">
-                        <select id="payment-method" class="paying-option" name="payment_method">
-                            <option value="">支払い方法を選択</option>
+                    <div class="payment-type__select">
+                        <select id="payment-method" name="payment_method">
+                            <option value="">選択してください</option>
                             <option value="convenience">コンビニ払い</option>
                             <option value="credit">カード支払い</option>
                         </select>
