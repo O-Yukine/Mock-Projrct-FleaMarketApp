@@ -13,7 +13,7 @@
 }
 .right-content {
     width: 30%;
-    margin: 50px 20px;
+    margin: 50px 30px;
 }
 .order-image {
     width: 30%;
@@ -29,6 +29,7 @@
 }
 .order-information {
     margin-left: 30px;
+    font-size: 24px;
 }
 .order-information h3 {
     margin-top: 0;
@@ -36,7 +37,7 @@
 .payment-type,
 .shipping-address {
     border-bottom: 1px solid #000;
-    padding-bottom: 10px;
+    padding-bottom: 20px;
 }
 .payment-type__contents,
 .shipping-address__contents {
@@ -54,6 +55,12 @@
 }
 .shipping-address a :valid {
     color: blue;
+}
+.shipping-address__contents {
+    margin: 0 50px;
+}
+.shipping-address__contents p {
+    margin: 0;
 }
 .total-price {
     width: 100%;
@@ -78,4 +85,13 @@
     background: red;
     color: #fff;
     cursor: pointer;
+}
+@media screen and (max-width: 1540px) and (min-width: 1400px) {
+    .order-image img {
+        width: 80%;
+        padding-bottom: 20px;
+    }
+    .order-information {
+        margin-left: 10px;
+    }
 }
