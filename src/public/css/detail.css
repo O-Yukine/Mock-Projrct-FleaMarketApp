@@ -22,7 +22,41 @@
     border: none;
     cursor: pointer;
 }
+.product-info {
+    margin-top: 15px;
+}
+
+.product-category {
+    margin-bottom: 20px;
+    display: flex;
+}
+
+.info-label {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.category-list {
+    display: flex;
+    flex-wrap: wrap; /* 折り返しを有効化 */
+    gap: 8px; /* チップ同士の隙間 */
+}
+
 .category-chips {
+    background: rgb(238, 233, 233);
+    padding: 5px 10px;
+    border-radius: 34px;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+.product-condition-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* .category-chips {
     margin: 10px;
     background: rgb(238, 233, 233);
     padding: 5px;
@@ -31,7 +65,7 @@
 }
 .product-condition {
     margin: 30px 10px;
-}
+} */
 .comment__title img {
     width: 50px;
     height: 50px;

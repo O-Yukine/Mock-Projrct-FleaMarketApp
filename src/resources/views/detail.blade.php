@@ -44,13 +44,20 @@
                 <h3>商品説明</h3>
                 <p>{{ $product->content }} </p>
                 <h3>商品の情報</h3>
-
-                <span>カテゴリー</span>
-                @foreach ($product->categories as $category)
-                    <span class="category-chips">{{ $category->name }}</span>
-                @endforeach
-                <br>
-                <span>商品の状態</span><span class="product-condition">{{ $product->condition->name }}</span>
+                <div class="product-info">
+                    <div class="product-category">
+                        <span class="info-label">カテゴリー</span>
+                        <div class="category-list">
+                            @foreach ($product->categories as $category)
+                                <span class="category-chips">{{ $category->name }}</span>
+                            @endforeach
+                        </div>
+                    </div>
+                    <div class="product-condition-box">
+                        <span class="info-label">商品の状態</span>
+                        <span class="product-condition">{{ $product->condition->name }}</span>
+                    </div>
+                </div>
             </div>
             <div class="product__comments">
                 <h3>コメント({{ $product->comments->count() ?? 0 }})</h3>

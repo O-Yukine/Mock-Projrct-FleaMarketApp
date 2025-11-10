@@ -25,7 +25,7 @@
 .products__list {
     display: flex;
     flex-wrap: wrap;
-    margin: 15px;
+    margin: 15px 0px 15px 100px;
     width: 100%;
     gap: 10px;
 }
