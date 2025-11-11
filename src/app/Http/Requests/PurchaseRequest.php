@@ -27,7 +27,6 @@ class PurchaseRequest extends FormRequest
             'payment_method' => 'required',
             'post_code' => 'required|regex:/^\d{3}-\d{4}$/',
             'address'     => 'required|string|max:255',
-            'building'    => 'nullable|string|max:255',
         ];
     }
     public function messages()

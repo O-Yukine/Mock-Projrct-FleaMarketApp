@@ -21,6 +21,11 @@
                     <div class="payment-type__title">
                         <h4>支払い方法</h4>
                     </div>
+                    <div class="form__error">
+                        @error('payment_method')
+                            {{ $message }}
+                        @enderror
+                    </div>
                     <div class="payment-type__select">
                         <select id="payment-method" name="payment_method">
                             <option value="">選択してください</option>
@@ -29,19 +34,29 @@
                         </select>
                     </div>
                 </div>
-
                 <div class="shipping-address">
                     <div class="shipping-address__title">
                         <h4>配送先</h4>
                         <a href="/purchase/address/{{ $product->id }}">変更する</a>
                     </div>
                     <div class="shipping-address__contents">
+                        <div class="form__error">
+                            @error('post_code')
+                                {{ $message }}
+                            @enderror
+                        </div>
                         <p>〒<input type="hidden" name="post_code"
                                 value="{{ $shipping_address['post_code'] ?? $user->profile->post_code }}">
                             {{ $shipping_address['post_code'] ?? $user->profile->post_code }}</p>
+                        <div class="form__error">
+                            @error('address')
+                                {{ $message }}
+                            @enderror
+                        </div>
                         <span><input type="hidden" name="address"
                                 value="{{ $shipping_address['address'] ?? $user->profile->address }}">
                             {{ $shipping_address['address'] ?? $user->profile->address }}</span>
+
                         <span><input type="hidden" name="building"
                                 value="{{ $shipping_address['building'] ?? ($user->profile->building ?? '') }}">
                             {{ $shipping_address['building'] ?? ($user->profile->building ?? '') }}</span>
