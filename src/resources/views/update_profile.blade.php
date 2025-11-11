@@ -15,9 +15,9 @@
             <div class="profile-image">
                 <img src="{{ $profile->profile_image ? asset('storage/profile_images/' . $profile->profile_image) : '' }}"
                     alt="プロフィール写真">
-                <label for="profile_image" class="custom-file-input">
+                <label class="custom-file-input">
                     <span class="file-text">画像を選択する</span>
-                    <input type="file" name="profile_image">
+                    <input type="file" name="profile_image" id="profile_image">
                 </label>
             </div>
             <div class="profile__contents">
@@ -72,5 +72,11 @@
                     <button class="button__submit" type="submit">更新する</button>
                 </div>
         </form>
+        <script>
+            document.getElementById('profile_image').addEventListener('change', function(e) {
+                const fileName = e.target.files.length > 0 ? e.target.files[0].name : '画像を選択する';
+                e.target.previousElementSibling.textContent = fileName;
+            });
+        </script>
     </div>
 @endsection

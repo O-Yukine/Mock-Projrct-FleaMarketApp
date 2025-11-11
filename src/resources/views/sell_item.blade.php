@@ -15,9 +15,9 @@
                     <div class="form__group-title"><span>商品画像</span>
                     </div>
                     <div class="form__group-image">
-                        <label for="product_image" class="custom-file-input">
+                        <label class="custom-file-input">
                             <span class="file-text">画像を選択する</span>
-                            <input type="file" name="product_image">
+                            <input type="file" name="product_image" id="product_image">
                         </label>
                     </div>
                     <div class="form__error">
@@ -119,5 +119,12 @@
                 </div>
             </form>
         </div>
+
+        <script>
+            document.getElementById('product_image').addEventListener('change', function(e) {
+                const fileName = e.target.files.length > 0 ? e.target.files[0].name : '画像を選択する';
+                e.target.previousElementSibling.textContent = fileName;
+            });
+        </script>
     </div>
 @endsection
