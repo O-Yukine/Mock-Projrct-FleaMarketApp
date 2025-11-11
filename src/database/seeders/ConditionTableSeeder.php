@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\Condition;
 
-class ConditionSeeder extends Seeder
+class ConditionTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
