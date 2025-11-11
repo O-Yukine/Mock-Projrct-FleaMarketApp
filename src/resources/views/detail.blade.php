@@ -13,36 +13,42 @@
         <div class="right-content">
             <div class="product-detail">
                 <h2 class="product-title">{{ $product->name }}</h2>
-                {{ $product->brand }}
-                <p>¥{{ $product->price }}(税込)</p>
-                <form class="comments-form" action="/item/{{ $product->id }}/like" method="post">
-                    @csrf
-                    <button class="like__button" type="submit">
-                        <i
-                            class="{{ $product->likedBy->contains(auth()->id()) ? 'fa-solid' : 'fa-regular' }} fa-star fa-lg"></i>
-                    </button>
+                <p class="brand-name">{{ $product->brand }}</p>
+                <p>¥<span class="product-price">{{ $product->price }}</span>(税込)</p>
+                <div class="product-icons">
+                    <form class="like-form" action="/item/{{ $product->id }}/like" method="post">
+                        @csrf
+                        @php
+                            $heartImage = $product->likedBy->contains(auth()->id())
+                                ? asset('images/hart_like.png')
+                                : asset('images/hart_unlike.png');
+                        @endphp
 
-                    {{-- @if ($product->likedBy->contains(auth()->id()))
+                        <button class="like__button" type="submit">
+                            <img src="{{ $heartImage }}">
+                        </button>
+                        <p>{{ $product->likedBy->count() }}</p>
+
+                        {{-- @if ($product->likedBy->contains(auth()->id()))
                         <button><i class="fa-solid fa-star fa-lg"></i>
                         </button>
                     @else
                         <button><i class="fa-regular fa-star fa-lg"></i>
                         </button>
                     @endif --}}
-                </form>
-
-                {{ $product->likedBy->count() }}
-
-                <i class="fa-regular fa-comment fa-lg"></i>
-                {{ $product->comments->count() ?? 0 }}
-
-
+                    </form>
+                    <div class="comment-icon">
+                        <img src="{{ asset('images/comment.png') }}" alt="/comment_icon">
+                        <p>{{ $product->comments->count() ?? 0 }}</p>
+                    </div>
+                </div>
                 <form class="form.order" action="/purchase/{{ $product->id }}" method="get">
                     @csrf
                     <button class="order__button-submit" type="submit">購入手続きへ</button>
                 </form>
+
                 <h3>商品説明</h3>
-                <p>{{ $product->content }} </p>
+                <p class="product-contents">{{ $product->content }} </p>
                 <h3>商品の情報</h3>
                 <div class="product-info">
                     <div class="product-category">

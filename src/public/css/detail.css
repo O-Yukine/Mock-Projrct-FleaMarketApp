@@ -1,12 +1,12 @@
 .product {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start; /* 上端を揃える */
     margin: 0 auto;
     padding: 20px 40px;
     gap: 20px;
 }
 .left-content {
+    margin-top: 30px;
     width: 50%;
 }
 .left-content img {
@@ -17,10 +17,46 @@
     width: 50%;
     text-align: left;
 }
+.product-title {
+    font-size: 24px;
+    margin-bottom: 0;
+}
+.brand-name {
+    font-size: 0.8em;
+    margin-top: 0;
+}
+.product-price {
+    font-size: 24px;
+}
+.product-icons {
+    display: flex;
+    gap: 10px;
+    font-size: 0.8em;
+}
+.product-icons p {
+    text-align: center;
+}
+
 .like__button {
     background: none;
     border: none;
     cursor: pointer;
+}
+.like__button img {
+    width: 50%;
+}
+
+.comment-icon img {
+    width: 50%;
+}
+.comment-icon p {
+    text-align: left;
+    padding-left: 5px;
+    padding-top: 1px;
+}
+.product-contents,
+.product-condition {
+    font-size: 0.8em;
 }
 .product-info {
     margin-top: 15px;
@@ -46,7 +82,7 @@
     background: rgb(238, 233, 233);
     padding: 5px 10px;
     border-radius: 34px;
-    font-size: 12px;
+    font-size: 0.8em;
     white-space: nowrap;
 }
 
@@ -56,16 +92,9 @@
     gap: 10px;
 }
 
-/* .category-chips {
-    margin: 10px;
-    background: rgb(238, 233, 233);
-    padding: 5px;
-    border-radius: 34px;
-    font-size: 12px;
+.product__comments h3 {
+    color: rgb(165, 161, 161);
 }
-.product-condition {
-    margin: 30px 10px;
-} */
 .comment__title img {
     width: 50px;
     height: 50px;
@@ -85,8 +114,14 @@
     color: #fff;
     cursor: pointer;
 }
+.comments-form p {
+    font-weight: bold;
+    margin-bottom: 0;
+}
 textarea {
     width: 100%;
     height: 200px;
     margin-bottom: 20px;
+}
+@media screen and (max-width: 1540px) and (min-width: 1400px) {
 }
