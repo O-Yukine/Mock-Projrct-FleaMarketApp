@@ -35,12 +35,10 @@
                     </div>
                     <div class="form__group-chips">
                         @foreach ($categories as $category)
-                            <label class="chip">
-                                <input id="category_{{ $category->id }}" type="checkbox" name="categories[]"
-                                    value="{{ $category->id }}"
-                                    {{ in_array($category->id, old('categories', $selectedCategories ?? [])) ? 'checked' : '' }}>
-                                <span>{{ $category->name }}</span>
-                            </label>
+                            <input id="category_{{ $category->id }}" type="checkbox" name="categories[]"
+                                value="{{ $category->id }}"
+                                {{ in_array($category->id, old('categories', $selectedCategories ?? [])) ? 'checked' : '' }}>
+                            <label for="category_{{ $category->id }}"> {{ $category->name }}</label>
                         @endforeach
                     </div>
                     <div class="form__error">

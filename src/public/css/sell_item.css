@@ -56,28 +56,30 @@
     display: flex;
     flex-wrap: wrap;
     margin-top: 5px;
-    gap: 10px;
+    gap: 20px;
 }
 
-.chip {
+.form__group-chips label {
     border: 1px solid #e60023;
     border-radius: 9999px;
-    padding: 3px 5px;
+    color: #e60023;
+    font-size: 14px;
+    padding: 6px;
     cursor: pointer;
     transition: 0.2s;
     user-select: none;
 }
 
-.chip input {
+.form__group-chips input {
     display: none;
 }
 
-.chip input:checked + span {
+.form__group-chips input:checked + label {
     background-color: #e60023;
     color: #fff;
     border-color: #e60023;
     border-radius: 9999px;
-    padding: 3px 7px;
+    padding: 3px 6px;
 }
 
 .form__group-select {
