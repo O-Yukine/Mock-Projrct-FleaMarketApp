@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\PurchaseRequest;
 use App\Http\Requests\AddressRequest;
 use App\Http\Requests\ExhibitionRequest;
+use App\Http\Requests\CommentRequest;
 use App\Models\Category;
 use App\Models\Condition;
 use App\Models\Product;
@@ -50,7 +51,7 @@ class ItemController extends Controller
         return view('detail', compact('product'));
     }
 
-    public function makeComment(Request $request, $item_id)
+    public function makeComment(CommentRequest $request, $item_id)
     {
         Comment::create([
             'product_id' => $item_id,

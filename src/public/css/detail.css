@@ -101,7 +101,7 @@
     border-radius: 100%;
 }
 .comment__contents {
-    margin: 10px auto;
+    margin: 10px 100px;
 }
 .order__button-submit,
 .comment__button-submit {
@@ -123,5 +123,9 @@ textarea {
     height: 200px;
     margin-bottom: 20px;
 }
-@media screen and (max-width: 1540px) and (min-width: 1400px) {
+.form__error {
+    margin-bottom: 10px;
+    height: 20px;
+    color: #ff0000;
+    text-align: right;
 }
