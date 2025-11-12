@@ -25,7 +25,7 @@ class ProductTableSeeder extends Seeder
                 'product_image' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Armani+Mens+Clock.jpg',
                 'content' => 'スタイリッシュなデザインのメンズ腕時計',
                 'condition_id' => 1,
-                'categories' => [0, 4],
+                'categories' => [1, 5],
             ],
             [
                 'name' => 'HDD',
@@ -34,7 +34,7 @@ class ProductTableSeeder extends Seeder
                 'product_image' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/HDD+Hard+Disk.jpg',
                 'content' => '高速で信頼性の高いハードディスク',
                 'condition_id' => 2,
-                'categories' => [2],
+                'categories' => [3],
             ],
 
             [
@@ -44,7 +44,7 @@ class ProductTableSeeder extends Seeder
                 'product_image' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/iLoveIMG+d.jpg',
                 'content' => '新鮮な玉ねぎ3束のセット',
                 'condition_id' => 3,
-                'categories' => [9],
+                'categories' => [10],
             ],
 
             [
@@ -54,7 +54,7 @@ class ProductTableSeeder extends Seeder
                 'product_image' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Leather+Shoes+Product+Photo.jpg',
                 'content' => 'クラシックなデザインの革靴',
                 'condition_id' => 4,
-                'categories' => [0, 4],
+                'categories' => [1, 5],
             ],
 
             [
@@ -64,7 +64,7 @@ class ProductTableSeeder extends Seeder
                 'product_image' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Living+Room+Laptop.jpg',
                 'content' => '高性能なノートパソコン',
                 'condition_id' => 1,
-                'categories' => [1],
+                'categories' => [2],
 
             ],
 
@@ -75,7 +75,7 @@ class ProductTableSeeder extends Seeder
                 'product_image' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Music+Mic+4632231.jpg',
                 'content' => '高音質のレコーディング用マイク',
                 'condition_id' => 2,
-                'categories' => [1],
+                'categories' => [2],
             ],
 
             [
@@ -85,7 +85,7 @@ class ProductTableSeeder extends Seeder
                 'product_image' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Purse+fashion+pocket.jpg',
                 'content' => 'おしゃれなショルダーバッグ',
                 'condition_id' => 3,
-                'categories' => [0, 3, 11],
+                'categories' => [1, 4, 12],
             ],
 
             [
@@ -95,7 +95,7 @@ class ProductTableSeeder extends Seeder
                 'product_image' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Tumbler+souvenir.jpg',
                 'content' => '使いやすいタンブラー',
                 'condition_id' => 4,
-                'categories' => [9],
+                'categories' => [10],
             ],
 
             [
@@ -105,7 +105,7 @@ class ProductTableSeeder extends Seeder
                 'product_image' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Waitress+with+Coffee+Grinder.jpg',
                 'content' => '手動のコーヒーミル',
                 'condition_id' => 1,
-                'categories' => [9],
+                'categories' => [10],
             ],
 
             [
@@ -115,25 +115,25 @@ class ProductTableSeeder extends Seeder
                 'product_image' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/%E5%A4%96%E5%87%BA%E3%83%A1%E3%82%A4%E3%82%AF%E3%82%A2%E3%83%83%E3%83%95%E3%82%9A%E3%82%BB%E3%83%83%E3%83%88.jpg',
                 'content' => '便利なメイクアップセット',
                 'condition_id' => 3,
-                'categories' => [0, 3, 5],
+                'categories' => [1, 4, 6],
             ],
         ];
 
-        foreach ($products as $product) {
+        foreach ($products as $item) {
 
             $userId = $userIds[array_rand($userIds)];
 
             $product = Product::create([
-                'name' => $product['name'],
-                'price' => $product['price'],
-                'brand' => $product['brand'],
-                'product_image' => $product['product_image'],
-                'content' => $product['content'],
-                'condition_id' => $product['condition_id'],
+                'name' => $item['name'],
+                'price' => $item['price'],
+                'brand' => $item['brand'],
+                'product_image' => $item['product_image'],
+                'content' => $item['content'],
+                'condition_id' => $item['condition_id'],
                 'user_id' => $userId,
             ]);
 
-            $product->categories()->attach($product['categories']);
+            $product->categories()->attach($item['categories']);
         };
     }
 }

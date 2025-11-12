@@ -24,7 +24,8 @@
                 @if ($tab === 'sell')
                     @foreach ($sell_items as $item)
                         <div class="card">
-                            <img src="{{ asset('storage/product_images/' . $item->product_image) }}" alt="商品画像">
+                            <img src="{{ url($item->product_image) }}" alt="{{ $item->name }}">
+                            {{-- <img src="{{ asset('storage/product_images/' . $item->product_image) }}" alt="商品画像"> --}}
                             <div class="card-info">
                                 <p>{{ $item->name }}</p>
                             </div>
@@ -35,8 +36,9 @@
                 @if ($tab === 'buy')
                     @foreach ($purchased_items as $purchase)
                         <div class="card">
-                            <img src="{{ asset('storage/product_images/' . $purchase->product->product_image) }}"
-                                alt="商品画像">
+                            <img src="{{ url($item->product_image) }}" alt="{{ $item->name }}">
+                            {{-- <img src="{{ asset('storage/product_images/' . $purchase->product->product_image) }}" --}}
+                            alt="商品画像">
                             <div class="card-info">
                                 <p>{{ $purchase->product->name }}</p>
                             </div>
