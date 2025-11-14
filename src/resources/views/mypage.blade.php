@@ -28,6 +28,9 @@
                             {{-- <img src="{{ asset('storage/product_images/' . $item->product_image) }}" alt="商品画像"> --}}
                             <div class="card-info">
                                 <p>{{ $item->name }}</p>
+                                @if ($item->purchases->isNotEmpty())
+                                    <span class="sold-label">sold</span>
+                                @endif
                             </div>
                         </div>
                     @endforeach
