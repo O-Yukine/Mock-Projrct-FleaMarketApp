@@ -5,6 +5,11 @@
 @endsection
 @section('content')
     <div class="products">
+        @if (request('message'))
+            <script>
+                alert("{{ reqest('message') }}");
+            </script>
+        @endif
         <div class="products_nav">
             <a href="/?tab=recommended&keyword={{ request('keyword') }}"
                 class="{{ $tab == 'recommended' ? 'active' : '' }}">おすすめ</a>

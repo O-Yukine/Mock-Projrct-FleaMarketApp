@@ -8,6 +8,8 @@ use App\Http\Requests\AddressRequest;
 use App\Models\Product;
 use App\Models\User;
 use App\Models\Purchase;
+use Stripe\Checkout\Session;
+use Stripe\Stripe;
 
 class PurchaseController extends Controller
 {
@@ -32,7 +34,30 @@ class PurchaseController extends Controller
             'building' => $request->building
         ]);
 
-        return redirect('/');
+        $product = Product::find($item_id);
+        Stripe::setApiKey(env('STRIPE_SECRET'));
+
+        $method = $request->payment_method === 'credit' ? ['card'] : ['konbini'];
+
+        $checkout = Session::create([
+            'payment_method_types' => $method,
+            'line_items' => [[
+                'price_data' => [
+                    'currency' => 'jpy',
+                    'unit_amount' => $product->price,
+                    'product_data' => [
+                        'name' => $product->name,
+                    ],
+                ],
+                'quantity' => 1,
+            ]],
+            'mode' => 'payment',
+            'success_url' => url('/') . '?message=' . urlencode('決済が完了しました'),
+
+        ]);
+
+
+        return redirect($checkout->url);
     }
 
     public function showShippingAddress($item_id)
