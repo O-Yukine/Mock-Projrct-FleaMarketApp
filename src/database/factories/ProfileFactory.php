@@ -14,7 +14,7 @@ class ProfileFactory extends Factory
     public function definition()
     {
         return [
-            'post_code' => $this->faker->postcode(),
+            'post_code' => $this->faker->regexify('\d{3}-\d{4}'),
             'address' => $this->faker->prefecture() . $this->faker->city() . $this->faker->streetAddress(),
             'building' => $this->faker->optional()->secondaryAddress(),
         ];
