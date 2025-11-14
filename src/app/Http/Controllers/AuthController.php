@@ -20,14 +20,18 @@ class AuthController extends Controller
             'password' => Hash::make($request['password'])
         ]);
 
-        Auth::login($user);
+        $user->sendEmailVerificationNotification();
 
-        $user->profile()->create([
-            'post_code' => '',
-            'address' => ''
-        ]);
+        return redirect('/email/verify');
 
-        return redirect('/mypage/profile');
+        // Auth::login($user);
+
+        // $user->profile()->create([
+        //     'post_code' => '',
+        //     'address' => ''
+        // ]);
+
+        // return redirect('/mypage/profile');
     }
 
     public function login(LoginRequest $request)

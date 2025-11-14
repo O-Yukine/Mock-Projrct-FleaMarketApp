@@ -9,6 +9,7 @@ use App\Http\Controllers\LikeController;
 use App\Http\Controllers\PurchaseController;
 
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,6 +21,8 @@ use App\Http\Controllers\PurchaseController;
 |
 */
 
+// Auth::routes(['verify' => true]);
+
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'destroy']);
@@ -27,22 +30,22 @@ Route::post('/logout', [AuthController::class, 'destroy']);
 Route::get('/', [ItemController::class, 'index']);
 Route::get('/item/{item_id}', [ItemController::class, 'showDetail']);
 
-Route::middleware('auth')->prefix('sell')->group(function () {
+Route::middleware('auth', 'verified')->prefix('sell')->group(function () {
     Route::get('/', [ItemController::class, 'showSellForm']);
     Route::post('/', [ItemController::class, 'sellItem']);
 });
 
 
-Route::middleware('auth')->prefix('mypage')->group(function () {
+Route::middleware('auth', 'verified')->prefix('mypage')->group(function () {
     Route::get('/', [MypageController::class, 'showMypage']);
     Route::get('/profile', [MypageController::class, 'showProfile']);
     Route::post('/profile', [MypageController::class, 'updateProfile']);
 });
 
-Route::post('/item/{item_id}/comment', [CommentController::class, 'makeComment'])->middleware('auth');
-Route::post('/item/{item_id}/like', [LikeController::class, 'likeItem'])->middleware('auth');
+Route::post('/item/{item_id}/comment', [CommentController::class, 'makeComment'])->middleware('auth', 'verified');
+Route::post('/item/{item_id}/like', [LikeController::class, 'likeItem'])->middleware('auth', 'verified');
 
-Route::middleware('auth')->prefix('purchase')->group(function () {
+Route::middleware('auth', 'verified')->prefix('purchase')->group(function () {
     Route::get('/{item_id}', [PurchaseController::class, 'showOrder']);
     Route::post('/{item_id}', [PurchaseController::class, 'completeOrder']);
     Route::get('/address/{item_id}', [PurchaseController::class, 'showShippingAddress']);
