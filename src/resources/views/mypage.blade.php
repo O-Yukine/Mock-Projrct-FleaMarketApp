@@ -36,9 +36,9 @@
                 @if ($tab === 'buy')
                     @foreach ($purchased_items as $purchase)
                         <div class="card">
-                            <img src="{{ url($item->product_image) }}" alt="{{ $item->name }}">
+                            <img src="{{ url($purchase->product->product_image) }}" alt="{{ $purchase->product->name }}">
                             {{-- <img src="{{ asset('storage/product_images/' . $purchase->product->product_image) }}" --}}
-                            alt="商品画像">
+
                             <div class="card-info">
                                 <p>{{ $purchase->product->name }}</p>
                             </div>

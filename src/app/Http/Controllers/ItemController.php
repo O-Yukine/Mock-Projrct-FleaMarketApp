@@ -63,10 +63,10 @@ class ItemController extends Controller
             'product_image' => $filename,
             'condition_id' => $request->condition_id,
             'user_id' => auth()->id(),
-            'name' => $request->name,
+            'name' => $request->input('name');
             'brand' => $request->brand,
-            'content' => $request->content,
-            'price' => $request->price
+            'content' => $request->input('content');
+            'price' => $request->input('price');
         ]);
 
         $product->categories()->sync($request->categories);

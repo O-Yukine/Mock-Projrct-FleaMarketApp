@@ -55,7 +55,7 @@
                             <option value="">選択してください</option>
                             @foreach ($conditions as $condition)
                                 <option value="{{ $condition->id }}">
-                                    {{ old('condition', $selectedConditionId ?? '') == $condition->id ? 'selected' : '' }}
+                                    {{ old('condition_id', $selectedConditionId ?? '') == $condition->id ? 'selected' : '' }}
                                     {{ $condition->name }}</option>
                             @endforeach
                         </select>
@@ -92,8 +92,7 @@
                     <div class="form__group-title"><span>商品の説明</span>
                     </div>
                     <div class="form__group-input">
-                        <textarea name="content" cols="30" rows="10"></textarea>
-                        {{ old('content') }}
+                        <textarea name="content" cols="30" rows="10">{{ old('content') }}</textarea>
                     </div>
                     <div class="form__error">
                         @error('content')
