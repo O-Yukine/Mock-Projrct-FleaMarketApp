@@ -4,14 +4,21 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Support\Facades\URL;
 
 class VerifyEmailController extends Controller
 {
     public function index()
     {
-        return view('auth.verify-email');
-    }
 
+        $verificationUrl = URL::temporarySignedRoute(
+            'verification.verify',
+            now()->addMinutes(60),
+            ['id' => auth()->user()->id, 'hash' => sha1(auth()->user()->email)]
+        );
+
+        return view('auth.verify-email', compact('verificationUrl'));
+    }
     public function verifyEmail(EmailVerificationRequest $request)
     {
         $request->fulfill();

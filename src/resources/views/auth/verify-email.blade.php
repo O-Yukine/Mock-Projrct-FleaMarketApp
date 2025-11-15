@@ -9,7 +9,7 @@
         <br>
         <p>メール認証を完了してください</p>
 
-        {{-- <a href="{{ route('verification.verify') }}">認証はこちらから</a> --}}
+        <a href="{{ $verificationUrl }}">認証はこちらから</a>
 
         <form method="POST" action="{{ route('verification.send') }}">
             @csrf
