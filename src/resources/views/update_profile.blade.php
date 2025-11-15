@@ -13,8 +13,7 @@
         <form class="form" action="/mypage/profile" enctype="multipart/form-data" method="post">
             @csrf
             <div class="profile-image">
-                <img src="{{ $profile->profile_image ? asset('storage/profile_images/' . $profile->profile_image) : '' }}"
-                    alt="プロフィール写真">
+                <img src="{{ $profile->profile_image ? asset('storage/profile_images/' . $profile->profile_image) : '' }}">
                 <label class="custom-file-input">
                     <span class="file-text">画像を選択する</span>
                     <input type="file" name="profile_image" id="profile_image">
